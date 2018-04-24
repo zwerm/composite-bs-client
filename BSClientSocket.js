@@ -256,7 +256,7 @@ class BSClientSocket extends EventEmitter {
 
                 if (parsedServerMessage) this._emitMessaged(parsedServerMessage);
             });
-            socket.addEventListener('close', event => this._emitClosed(event.code));
+            socket.addEventListener('close', event => this._handleSocketClosed(event));
 
             console.log('socket opened');
 
@@ -267,6 +267,18 @@ class BSClientSocket extends EventEmitter {
     }
 
     // region handle socket events
+    /**
+     * Handles when the websocket receives a close event.
+     *
+     * @param {CloseEvent} closeEvent
+     *
+     * @fires BSClientSocket#E_SOCKET_CLOSE
+     * @private
+     */
+    _handleSocketClosed(closeEvent) {
+        this._emitClosed(closeEvent.code);
+    }
+
     /**
      * Handles when the websocket emits an error event.
      *
