@@ -208,17 +208,21 @@ class BSClientSocket extends EventEmitter {
 
     /**
      * Attempts to reconnect to the BotSocket server by instancing a new socket.
+     *
+     * @param {string} botUserSessionId
      */
-    reconnect() {
-        this.connect();
+    reconnect(botUserSessionId) {
+        this.connect(botUserSessionId);
     }
 
     /**
      * Attempts to connect to the BotSocket server by instancing a new socket.
+     *
+     * @param {string} botUserSessionId
      */
-    connect() {
+    connect(botUserSessionId) {
         // todo: test about closing the socket if it's already connected/open
-        this._newSocket();
+        this._newSocket(botUserSessionId);
     }
 
     /**
@@ -232,12 +236,13 @@ class BSClientSocket extends EventEmitter {
     }
 
     /**
+     * @param {string} botUserSessionId
      *
      * @return {WebSocket}
      * @private
      */
-    _newSocket() {
-        const sessionId = this._getSessionIdFn() || '';
+    _newSocket(botUserSessionId) {
+        const sessionId = botUserSessionId || this._getSessionIdFn() || '';
 
         const socket = new WebSocket(`${this._url}?session=${sessionId}`);
 
