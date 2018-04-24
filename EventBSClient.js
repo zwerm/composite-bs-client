@@ -107,7 +107,7 @@ class EventBSClient extends AbstractBSClient {
     /**
      * Binds a listener for an event.
      *
-     * @param {string} type
+     * @param {'e:render.status'|'e:render.letter'|string} type
      * @param {function} listener
      *
      * @return {EventBSClient}
@@ -121,7 +121,7 @@ class EventBSClient extends AbstractBSClient {
     /**
      * Unbinds a listener for an event.
      *
-     * @param {string} type
+     * @param {'e:render.status'|'e:render.letter'|string} type
      * @param {function} listener
      *
      * @return {EventBSClient}
