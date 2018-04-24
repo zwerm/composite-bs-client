@@ -245,17 +245,7 @@ class BSClientSocket extends EventEmitter {
             this._emitOpened();
 
             // only attach the extra listeners to the socket once we get a connection
-            socket.addEventListener('message', (event) => {
-                let parsedServerMessage = null;
-
-                try {
-                    parsedServerMessage = JSON.parse(event.data);
-                } catch (error) {
-                    console.error('server sent malformed json:', event.data);
-                }
-
-                if (parsedServerMessage) this._emitMessaged(parsedServerMessage);
-            });
+            socket.addEventListener('message', event => this._handleSocketMessaged(event));
             socket.addEventListener('close', event => this._handleSocketClosed(event));
 
             console.log('socket opened');
@@ -267,6 +257,22 @@ class BSClientSocket extends EventEmitter {
     }
 
     // region handle socket events
+    /**
+     * Handles when the websocket receives a message event.
+     *
+     * @param {MessageEvent} messageEvent
+     *
+     * @fires BSClientSocket#E_SOCKET_MESSAGE
+     * @private
+     */
+    _handleSocketMessaged(messageEvent) {
+        try {
+            this._emitMessaged(JSON.parse(messageEvent.data));
+        } catch (error) {
+            console.error('server sent malformed json:', messageEvent.data);
+        }
+    }
+
     /**
      * Handles when the websocket receives a close event.
      *
