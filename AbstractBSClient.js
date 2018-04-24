@@ -29,10 +29,10 @@ class AbstractBSClient {
     /**
      *
      * @param {string} bsUrl
-     * @param {?string} userBotSessionId
+     * @param {?string} [userBotSessionId=null]
      * @param {string} [timezone=moment.tz.guess()]
      */
-    constructor(bsUrl, userBotSessionId, timezone = moment.tz.guess()) {
+    constructor(bsUrl, userBotSessionId = null, timezone = moment.tz.guess()) {
         /**
          *
          * @type {number}
