@@ -16,49 +16,49 @@ export declare namespace BotSocket {
                 | 'render-letter'
                 ;
 
-            abstract class Standard {
+            interface StandardRequest {
                 request: Request;
                 data: StandardData;
             }
 
-            abstract class StandardData {
+            interface StandardData {
             }
 
             // region unique messages
-            class ClientHandshake extends Standard {
+            interface ClientHandshake extends StandardRequest {
                 request: 'handshake';
                 data: ClientHandshakeData;
             }
 
-            class ClientHandshakeData {
+            interface ClientHandshakeData {
                 sessionId: string;
                 supports: Array<string>;
                 timezone?: string;
             }
 
-            class ServerHandshake extends Standard {
+            interface ServerHandshake extends StandardRequest {
                 request: 'handshake';
                 data: ServerHandshakeData;
             }
 
-            class ServerHandshakeData {
+            interface ServerHandshakeData {
                 sessionId: string;
                 retryWaitTime: number;
             }
 
-            class SubmitQuery extends Standard {
+            interface SubmitQuery extends StandardRequest {
                 request: 'submit-query';
                 data: StaMP.Protocol.Messages.StandardisedQueryMessage;
             }
 
             // endregion
             // region render messages
-            class Render extends Standard {
+            interface Render extends StandardRequest {
                 request: RenderRequest;
                 data: RenderData;
             }
 
-            class RenderData {
+            interface RenderData {
                 /**
                  * @deprecated in favor of the letter property
                  */
@@ -67,11 +67,11 @@ export declare namespace BotSocket {
                 letter: StaMP.Protocol.Letter;
             }
 
-            class RenderMessages extends Render {
+            interface RenderMessages extends Render {
                 request: 'render-messages';
             }
 
-            class RenderLetter extends Render {
+            interface RenderLetter extends Render {
                 request: 'render-letter';
                 letter: StaMP.Protocol.Letter;
             }
