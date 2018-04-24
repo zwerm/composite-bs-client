@@ -154,7 +154,7 @@ class AbstractBSClient {
     }
 
     connect() {
-        this._bsClientSocket.connect();
+        this._bsClientSocket.connect(this.userBotSessionId);
 
         this._renderStatusUpdate('connecting...', 'warning');
     }
@@ -167,7 +167,7 @@ class AbstractBSClient {
      */
     _reconnectCountdown(countdown) {
         if (countdown <= 0) {
-            this._bsClientSocket.reconnect();
+            this._bsClientSocket.reconnect(this.userBotSessionId);
             this._renderStatusUpdate('reconnecting...', 'warning');
 
             return;
