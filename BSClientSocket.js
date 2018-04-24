@@ -123,7 +123,7 @@ class BSClientSocket extends EventEmitter {
     _emitOpened() {
         /**
          * @event BSClientSocket#E_SOCKET_OPEN
-         * @type {object}
+         * @type {Object}
          */
         this.emit(this.constructor.E_SOCKET_OPEN, {});
     }
@@ -139,7 +139,7 @@ class BSClientSocket extends EventEmitter {
     _emitClosed(disconnectCode) {
         /**
          * @event BSClientSocket#E_SOCKET_CLOSE
-         * @type {object}
+         * @type {Object}
          *
          * @property {number} E_SOCKET_CLOSE:disconnectCode
          */
@@ -155,7 +155,7 @@ class BSClientSocket extends EventEmitter {
     _emitErrored() {
         /**
          * @event BSClientSocket#E_SOCKET_ERROR
-         * @type {object}
+         * @type {Object}
          */
         this.emit(this.constructor.E_SOCKET_ERROR, {});
     }
@@ -173,7 +173,7 @@ class BSClientSocket extends EventEmitter {
     _emitMessaged(message) {
         /**
          * @event BSClientSocket#E_SOCKET_MESSAGE
-         * @type {object}
+         * @type {Object}
          *
          * @property {BotSocket.Protocol.Messages.StandardRequest} E_SOCKET_MESSAGE:message
          */
