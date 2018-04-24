@@ -27,6 +27,7 @@
   "devDependencies": {
     "@types/callsite": "^1.0.30",
     "@types/jquery": "^3.3.1",
-    "@types/moment-timezone": "^0.5.4"
+    "@types/moment-timezone": "^0.5.4",
+    "@types/node": "^8.10.9"
   }
 }
