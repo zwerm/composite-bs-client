@@ -184,11 +184,14 @@ class AbstractBSClient {
     /**
      * Sends a query message to the BotSocket server.
      *
+     * Unless provided in the `data` parameter, `AbstractBSClient#userBotSessionId`
+     * will be used for the required `data.senderId` property, via the spread operator.
+     *
      * @param {string} query
      * @param {string} [text=query]
-     * @param {StaMP.Protocol.Messages.StandardisedQueryMessageData|Object} [data={ senderId: this.userBotSession }]
+     * @param {StaMP.Protocol.Messages.StandardisedQueryMessageData|Object} [data={}]
      */
-    sendQuery(query, text = query, data = { senderId: this.userBotSessionId }) {
+    sendQuery(query, text = query, data = {}) {
         this._bsClientSocket.sendMessageToServer('submit-query', {
             type: 'query',
             query,
