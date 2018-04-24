@@ -5,7 +5,7 @@ const UnsupportedRequestTypeException = require('./exceptions/UnsupportedRequest
 
 const BSClientSocket = require('./BSClientSocket');
 
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 class AbstractBSClient {
     /**
