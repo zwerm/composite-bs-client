@@ -239,7 +239,7 @@ class BSClientSocket extends EventEmitter {
 
         const socket = new WebSocket(`${this._url}?session=${sessionId}`);
 
-        socket.addEventListener('error', () => this._emitErrored());
+        socket.addEventListener('error', event => this._handleSocketErrored(event));
 
         socket.addEventListener('open', () => {
             this._emitOpened();
@@ -265,6 +265,21 @@ class BSClientSocket extends EventEmitter {
 
         this._socket = socket;
     }
+
+    // region handle socket events
+    /**
+     * Handles when the websocket emits an error event.
+     *
+     * @param {Event} errorEvent
+     *
+     * @fires BSClientSocket#E_SOCKET_ERROR
+     * @private
+     */
+    _handleSocketErrored(errorEvent) {
+        this._emitErrored();
+    }
+
+    // endregion
 }
 
 module.exports = BSClientSocket;
