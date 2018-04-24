@@ -1,5 +1,5 @@
 {
-  "name": "botsocket-clients",
+  "name": "@zwerm/botsocket-clients",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
