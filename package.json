@@ -1,27 +1,27 @@
 {
-  "name": "@zwerm/botsocket-clients",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org/preferizi/botsocket-clients.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/preferizi/botsocket-clients#readme",
-  "dependencies": {
-    "callsite": "^1.0.0",
-    "moment": "^2.22.1",
-    "moment-timezone": "^0.5.16",
-    "stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
-  },
-  "devDependencies": {
-    "@types/callsite": "^1.0.30",
-    "@types/moment-timezone": "^0.5.4",
-    "@types/node": "^8.10.9"
-  }
+    "name": "@zwerm/botsocket-clients",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@bitbucket.org/preferizi/botsocket-clients.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "homepage": "https://bitbucket.org/preferizi/botsocket-clients#readme",
+    "dependencies": {
+        "callsite": "^1.0.0",
+        "moment": "^2.22.1",
+        "moment-timezone": "^0.5.16",
+        "stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
+    },
+    "devDependencies": {
+        "@types/callsite": "^1.0.30",
+        "@types/moment-timezone": "^0.5.4",
+        "@types/node": "^8.10.9"
+    }
 }
