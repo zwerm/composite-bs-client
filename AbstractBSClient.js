@@ -7,6 +7,9 @@ const BSClientSocket = require('./BSClientSocket');
 
 const moment = require('moment-timezone');
 
+/**
+ *
+ */
 class AbstractBSClient {
     /**
      * Gets the classification of the sender of the given `StaMP` message.
@@ -44,7 +47,7 @@ class AbstractBSClient {
          * @type {BSClientSocket}
          * @protected
          */
-        this._bsClientSocket = new BSClientSocket(bsUrl, () => this.userBotSessionId, timezone);
+        this._bsClientSocket = new BSClientSocket(bsUrl, timezone);
         /**
          *
          * @type {?string}

@@ -15,10 +15,9 @@ class BSClientSocket extends EventEmitter {
     /**
      *
      * @param {string} url
-     * @param {function(): ?string} [getSessionIdFn=() => null] function that returns the session id string to connect with
      * @param {string} timezone
      */
-    constructor(url, getSessionIdFn = () => null, timezone) {
+    constructor(url, timezone) {
         super();
 
         /**
@@ -33,12 +32,6 @@ class BSClientSocket extends EventEmitter {
          * @private
          */
         this._socket = null;
-        /**
-         *
-         * @type {function(): ?string}
-         * @private
-         */
-        this._getSessionIdFn = getSessionIdFn;
         /**
          *
          * @type {string}
@@ -242,7 +235,7 @@ class BSClientSocket extends EventEmitter {
      * @private
      */
     _newSocket(botUserSessionId) {
-        const sessionId = botUserSessionId || this._getSessionIdFn() || '';
+        const sessionId = botUserSessionId || '';
 
         const socket = new WebSocket(`${this._url}?session=${sessionId}`);
 
