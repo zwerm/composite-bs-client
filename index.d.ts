@@ -1,9 +1,28 @@
 import { StaMP } from 'stamp';
+import { EventEmitter } from 'events';
 
 export declare namespace BotSocket {
+    import MessagesRequestDataMap = BotSocket.Protocol.Messages.MessagesRequestDataMap;
+
+    interface ClientSocket extends EventEmitter {
+        connect();
+
+        reconnect();
+
+        close(code);
+
+        sendMessageToServer<RequestType extends keyof MessagesRequestDataMap>(request: RequestType, requestData: MessagesRequestDataMap[RequestType]);
+    }
+
     // region namespace: Protocol
     namespace Protocol {
         namespace Messages {
+            interface MessagesRequestDataMap {
+                'handshake': ClientHandshakeData,
+                'submit-query': SubmitQueryData,
+                'render-letter': RenderData
+            }
+
             export type Request =
                 'handshake'
                 | 'submit-query'
@@ -48,7 +67,11 @@ export declare namespace BotSocket {
 
             interface SubmitQuery extends StandardRequest {
                 request: 'submit-query';
-                data: StaMP.Protocol.Messages.StandardisedQueryMessage;
+                data: SubmitQueryData;
+            }
+
+            interface SubmitQueryData extends StaMP.Protocol.Messages.StandardisedQueryMessage {
+
             }
 
             // endregion
@@ -73,7 +96,6 @@ export declare namespace BotSocket {
 
             interface RenderLetter extends Render {
                 request: 'render-letter';
-                letter: StaMP.Protocol.Letter;
             }
 
             // endregion
