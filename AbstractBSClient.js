@@ -32,10 +32,10 @@ class AbstractBSClient {
     /**
      *
      * @param {string} bsUrl
-     * @param {?string} [userBotSessionId=null]
+     * @param {?string} [clientId=null] the id of the client, to allow identification and tracking server-side.
      * @param {string} [timezone=moment.tz.guess()]
      */
-    constructor(bsUrl, userBotSessionId = null, timezone = moment.tz.guess()) {
+    constructor(bsUrl, clientId = null, timezone = moment.tz.guess()) {
         /**
          *
          * @type {number}
@@ -55,11 +55,12 @@ class AbstractBSClient {
          */
         this._timezone = timezone;
         /**
+         * the id of the client, to allow identification and tracking server-side.
          *
          * @type {?string}
          * @private
          */
-        this._userBotSessionId = userBotSessionId;
+        this._clientId = clientId;
 
         this._bsClientSocket.on(BSClientSocket.E_SOCKET_OPEN, (...args) => this._handleSocketConnected(...args));
         this._bsClientSocket.on(BSClientSocket.E_SOCKET_CLOSE, (...args) => this._handleSocketDisconnected(...args));
@@ -70,19 +71,25 @@ class AbstractBSClient {
     // region getters & setters
     // region userBotSession (get & set)
     /**
+     * Get the id of the client.
+     *
+     * This id is passed to the server to allow identification and tracking.
      *
      * @return {string}
      */
-    get userBotSessionId() {
-        return this._userBotSessionId;
+    get clientId() {
+        return this._clientId;
     }
 
     /**
+     * Set the id of the client.
      *
-     * @param {string} userBotSessionId
+     * This id is passed to the server to allow identification and tracking.
+     *
+     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
      */
-    set userBotSessionId(userBotSessionId) {
-        this._userBotSessionId = userBotSessionId;
+    set clientId(clientId) {
+        this._clientId = clientId;
     }
 
     // endregion
@@ -185,7 +192,7 @@ class AbstractBSClient {
     }
 
     connect() {
-        this._bsClientSocket.connect(this.userBotSessionId);
+        this._bsClientSocket.connect(this.clientId);
 
         this._renderStatusUpdate('connecting...', 'warning');
     }
@@ -198,7 +205,7 @@ class AbstractBSClient {
      */
     _reconnectCountdown(countdown) {
         if (countdown <= 0) {
-            this._bsClientSocket.reconnect(this.userBotSessionId);
+            this._bsClientSocket.reconnect(this.clientId);
             this._renderStatusUpdate('reconnecting...', 'warning');
 
             return;
@@ -215,7 +222,7 @@ class AbstractBSClient {
     /**
      * Sends a query message to the BotSocket server.
      *
-     * Unless provided in the `data` parameter, `AbstractBSClient#userBotSessionId`
+     * Unless provided in the `data` parameter, `AbstractBSClient#clientId`
      * will be used for the required `data.senderId` property, via the spread operator.
      *
      * @param {string} query
@@ -230,7 +237,7 @@ class AbstractBSClient {
             query,
             text,
             data: {
-                senderId: this.userBotSessionId,
+                senderId: this.clientId,
                 ...data
             },
             timezone: this.timezone
@@ -241,13 +248,14 @@ class AbstractBSClient {
      * Processes the result of handshaking with the BotSocket server.
      *
      * @param {BotSocket.Protocol.Messages.ServerHandshakeData} serverHandshake
-     * @param {number} [retryWaitTime=this#_retryWaitTime]
-     * @param {string} [sessionId=this#_userBotSession]
+     * @param {number} [retryWaitTime=this._retryWaitTime]
+     * @param {string} [sessionId=this.clientId]
+     * @param {string} [clientId=undefined]
      * @private
      */
-    _processServerHandshake({ retryWaitTime = this._retryWaitTime, sessionId = this._userBotSessionId } = {}) {
+    _processServerHandshake({ retryWaitTime = this._retryWaitTime, sessionId = this.clientId, clientId = undefined } = {}) {
         this._retryWaitTime = retryWaitTime;
-        this.userBotSessionId = sessionId;
+        this.clientId = clientId || sessionId;
     }
 
     /**
