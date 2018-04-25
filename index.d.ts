@@ -11,7 +11,7 @@ export declare namespace BotSocket {
 
         close(code);
 
-        sendMessageToServer<RequestType extends keyof MessagesRequestDataMap>(request: RequestType, requestData: MessagesRequestDataMap[RequestType]);
+        sendMessageToServer<RequestType extends keyof MessagesRequestDataMap>(request: RequestType, data: MessagesRequestDataMap[RequestType]);
     }
 
     // region namespace: Protocol
