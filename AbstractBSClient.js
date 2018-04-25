@@ -275,16 +275,6 @@ class AbstractBSClient {
     _renderLetter(letter) {
         throw new AbstractMethodCalledError();
     }
-
-    /**
-     *
-     * @param {string} format
-     *
-     * @return {string}
-     */
-    timestamp(format = 'hh:mm:ssa') {
-        return moment().format(format);
-    }
 }
 
 module.exports = AbstractBSClient;
