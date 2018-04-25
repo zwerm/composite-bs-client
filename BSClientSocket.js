@@ -10,9 +10,9 @@ const EventEmitter = require('events');
 class BSClientSocket extends EventEmitter {
     /**
      *
-     * @param {string} url
+     * @param {string} bsUrl
      */
-    constructor(url) {
+    constructor(bsUrl) {
         super();
 
         /**
@@ -20,7 +20,7 @@ class BSClientSocket extends EventEmitter {
          * @type {string}
          * @private
          */
-        this._url = url;
+        this._bsUrl = bsUrl;
         /**
          *
          * @type {WebSocket}
@@ -208,7 +208,7 @@ class BSClientSocket extends EventEmitter {
     _newSocket(botUserSessionId) {
         const sessionId = botUserSessionId || '';
 
-        const socket = new WebSocket(`${this._url}?session=${sessionId}`);
+        const socket = new WebSocket(`${this._bsUrl}?session=${sessionId}`);
 
         socket.addEventListener('error', event => this._handleSocketErrored(event));
 
