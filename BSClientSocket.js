@@ -33,8 +33,8 @@ class BSClientSocket extends EventEmitter {
         this._socket = null;
     }
 
-    // region static constant getters
-    // region E_SOCKET_CONNECTED
+    // region event constants
+    // region E_SOCKET_OPEN
     /**
      *
      * @return {'e:socket.open'}
@@ -44,7 +44,7 @@ class BSClientSocket extends EventEmitter {
     }
 
     // endregion
-    // region E_SOCKET_DISCONNECTED
+    // region E_SOCKET_CLOSE
     /**
      *
      * @return {'e:socket.close'}
@@ -54,7 +54,7 @@ class BSClientSocket extends EventEmitter {
     }
 
     // endregion
-    // region E_SOCKET_ERRORED
+    // region E_SOCKET_ERROR
     /**
      *
      * @return {'e:socket.error'}
@@ -64,7 +64,7 @@ class BSClientSocket extends EventEmitter {
     }
 
     // endregion
-    // region E_SOCKET_RECEIVED_MESSAGE
+    // region E_SOCKET_MESSAGE
     /**
      *
      * @return {'e:socket.message'}
