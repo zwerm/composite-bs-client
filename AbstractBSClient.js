@@ -79,10 +79,10 @@ class AbstractBSClient {
 
     /**
      *
-     * @param {string} session
+     * @param {string} userBotSessionId
      */
-    set userBotSessionId(session) {
-        this._userBotSessionId = session;
+    set userBotSessionId(userBotSessionId) {
+        this._userBotSessionId = userBotSessionId;
     }
 
     // endregion
