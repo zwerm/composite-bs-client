@@ -226,6 +226,7 @@ class AbstractBSClient {
         this._bsClientSocket.sendMessageToServer('submit-query', {
             $StaMP: true,
             type: 'query',
+            from: 'user',
             query,
             text,
             data: {
