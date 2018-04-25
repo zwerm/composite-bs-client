@@ -9,7 +9,7 @@ const EventEmitter = require('events');
  */
 
 /**
- *
+ * @implements {BotSocket.ClientSocket}
  */
 class BSClientSocket extends EventEmitter {
     /**
@@ -160,6 +160,7 @@ class BSClientSocket extends EventEmitter {
      *
      * @param {BotSocket.Protocol.Messages.Request} request
      * @param {BotSocket.Protocol.Messages.StandardData} [data={}]
+     * @override
      *
      * @throws {SocketNotReadyException} when the socket isn't ready to send messages.
      */
