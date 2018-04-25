@@ -68,7 +68,11 @@ export declare namespace BotSocket {
             }
 
             interface ServerHandshakeData {
+                /**
+                 * @deprecated in favor of clientId
+                 */
                 sessionId: string;
+                clientId: string;
                 retryWaitTime: number;
             }
 
