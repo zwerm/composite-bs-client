@@ -47,7 +47,13 @@ class AbstractBSClient {
          * @type {BSClientSocket}
          * @protected
          */
-        this._bsClientSocket = new BSClientSocket(bsUrl, timezone);
+        this._bsClientSocket = new BSClientSocket(bsUrl);
+        /**
+         *
+         * @type {string}
+         * @private
+         */
+        this._timezone = timezone;
         /**
          *
          * @type {?string}
@@ -77,6 +83,24 @@ class AbstractBSClient {
      */
     set userBotSessionId(session) {
         this._userBotSessionId = session;
+    }
+
+    // endregion
+    // region timezone (get & set)
+    /**
+     *
+     * @return {string}
+     */
+    get timezone() {
+        return this._timezone;
+    }
+
+    /**
+     *
+     * @param {string} timezone
+     */
+    set timezone(timezone) {
+        this._timezone = timezone;
     }
 
     // endregion
@@ -202,7 +226,8 @@ class AbstractBSClient {
             data: {
                 senderId: this.userBotSessionId,
                 ...data
-            }
+            },
+            timezone: this.timezone
         });
     }
 

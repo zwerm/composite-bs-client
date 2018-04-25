@@ -15,9 +15,8 @@ class BSClientSocket extends EventEmitter {
     /**
      *
      * @param {string} url
-     * @param {string} timezone
      */
-    constructor(url, timezone) {
+    constructor(url) {
         super();
 
         /**
@@ -32,12 +31,6 @@ class BSClientSocket extends EventEmitter {
          * @private
          */
         this._socket = null;
-        /**
-         *
-         * @type {string}
-         * @private
-         */
-        this._timezone = timezone;
     }
 
     // region static constant getters
@@ -83,25 +76,6 @@ class BSClientSocket extends EventEmitter {
     // endregion
     // endregion
     // region getters & setters
-    // region timezone (get & set)
-    /**
-     *
-     * @return {string}
-     */
-    get timezone() {
-        return this._timezone;
-    }
-
-    /**
-     *
-     * @param {string} timezone
-     */
-    set timezone(timezone) {
-        this._timezone = timezone;
-    }
-
-    // endregion
-    // region isConnected (get)
     /**
      *
      * @return {boolean}
@@ -110,7 +84,6 @@ class BSClientSocket extends EventEmitter {
         return this._socket.readyState === this._socket.OPEN;
     }
 
-    // endregion
     // endregion
     // region event emitting
     // region connected, disconnected, & errored
@@ -183,6 +156,7 @@ class BSClientSocket extends EventEmitter {
     // endregion
     // region sending messages
     /**
+     * Sends a BotSocket message to the BotSocket server.
      *
      * @param {BotSocket.Protocol.Messages.Request} request
      * @param {BotSocket.Protocol.Messages.StandardData} [data={}]
@@ -194,7 +168,7 @@ class BSClientSocket extends EventEmitter {
             throw new SocketNotReadyException(this._socket.readyState);
         }
 
-        this._socket.send(JSON.stringify({ request, data: { timezone: this._timezone, ...data } }));
+        this._socket.send(JSON.stringify({ request, data }));
     };
 
     // endregion
