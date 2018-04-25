@@ -33,14 +33,6 @@ class EventBSClient extends AbstractBSClient {
         return 'e:render.status';
     }
 
-    /**
-     *
-     * @return {'e:render.status'}
-     */
-    get E_RENDER_STATUS() {
-        return this.constructor.E_RENDER_STATUS;
-    }
-
     // endregion
     // region E_RENDER_LETTER
     /**
@@ -49,14 +41,6 @@ class EventBSClient extends AbstractBSClient {
      */
     static get E_RENDER_LETTER() {
         return 'e:render.letter';
-    }
-
-    /**
-     *
-     * @return {'e:render.letter'}
-     */
-    get E_RENDER_LETTER() {
-        return this.constructor.E_RENDER_LETTER;
     }
 
     // endregion
