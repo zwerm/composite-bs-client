@@ -4,6 +4,13 @@ import { EventEmitter } from 'events';
 export declare namespace BotSocket {
     import MessagesRequestDataMap = BotSocket.Protocol.Messages.MessagesRequestDataMap;
 
+    type StatusLevel =
+        | 'info'
+        | 'danger'
+        | 'warning'
+        | 'success'
+        ;
+
     interface ClientSocket extends EventEmitter {
         connect();
 

@@ -262,7 +262,7 @@ class AbstractBSClient {
      * Renders status update messages.
      *
      * @param {string} status
-     * @param {StatusLevel} level
+     * @param {BotSocket.StatusLevel} level
      * @protected
      * @abstract
      */

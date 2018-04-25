@@ -70,7 +70,7 @@ class EventBSClient extends AbstractBSClient {
      * For example, status messages will be broadcast counting down to the next reconnection attempt.
      *
      * @param {string} status
-     * @param {StatusLevel} level
+     * @param {BotSocket.StatusLevel} level
      *
      * @fires EventBSClient#E_RENDER_STATUS
      * @private
@@ -80,7 +80,7 @@ class EventBSClient extends AbstractBSClient {
          * @event EventBSClient#E_RENDER_STATUS
          * @type {object}
          * @property {string} E_RENDER_STATUS:status
-         * @property {StatusLevel} E_RENDER_STATUS:level
+         * @property {BotSocket.StatusLevel} E_RENDER_STATUS:level
          */
         this._eventEmitter.emit(this.constructor.E_RENDER_STATUS, { status, level });
     }
@@ -138,7 +138,7 @@ class EventBSClient extends AbstractBSClient {
      * @inheritDoc
      *
      * @param {string} status
-     * @param {StatusLevel} level
+     * @param {BotSocket.StatusLevel} level
      * @protected
      * @override
      */

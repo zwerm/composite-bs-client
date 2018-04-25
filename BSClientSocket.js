@@ -5,10 +5,6 @@ const SocketNotReadyException = require('./exceptions/SocketNotReadyException');
 const EventEmitter = require('events');
 
 /**
- * @typedef {'success'|'info'|'danger'|'warning'} StatusLevel
- */
-
-/**
  * @implements {BotSocket.ClientSocket}
  */
 class BSClientSocket extends EventEmitter {
