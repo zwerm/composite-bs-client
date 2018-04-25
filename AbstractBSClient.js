@@ -223,7 +223,7 @@ class AbstractBSClient {
      * @param {StaMP.Protocol.Messages.StandardisedQueryMessageData|Object} [data={}]
      */
     sendQuery(query, text = query, data = {}) {
-        this._bsClientSocket.sendMessageToServer('submit-query', {
+        (/** @type {BotSocket.ClientSocket} */this._bsClientSocket).sendMessageToServer('submit-query', {
             $StaMP: true,
             type: 'query',
             from: 'user',
