@@ -173,20 +173,20 @@ class BSClientSocket extends EventEmitter {
     /**
      * Attempts to reconnect to the BotSocket server by instancing a new socket.
      *
-     * @param {string} botUserSessionId
+     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
      */
-    reconnect(botUserSessionId) {
-        this.connect(botUserSessionId);
+    reconnect(clientId) {
+        this.connect(clientId);
     }
 
     /**
      * Attempts to connect to the BotSocket server by instancing a new socket.
      *
-     * @param {string} botUserSessionId
+     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
      */
-    connect(botUserSessionId) {
+    connect(clientId) {
         // todo: test about closing the socket if it's already connected/open
-        this._newSocket(botUserSessionId);
+        this._newSocket(clientId);
     }
 
     /**
@@ -200,15 +200,18 @@ class BSClientSocket extends EventEmitter {
     }
 
     /**
-     * @param {string} botUserSessionId
+     * Instantiates a new WebSocket to connect to a BotSocket server,
+     * setting up the relevant event handlers, and sending handshakes.
+     *
+     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
      *
      * @return {WebSocket}
      * @private
      */
-    _newSocket(botUserSessionId) {
-        const sessionId = botUserSessionId || '';
+    _newSocket(clientId) {
+        clientId = clientId || '';
 
-        const socket = new WebSocket(`${this._bsUrl}?session=${sessionId}`);
+        const socket = new WebSocket(`${this._bsUrl}?clientId=${clientId}&session=${clientId}`);
 
         socket.addEventListener('error', event => this._handleSocketErrored(event));
 
@@ -221,7 +224,7 @@ class BSClientSocket extends EventEmitter {
 
             console.log('socket opened');
 
-            this.sendMessageToServer('handshake', { sessionId });
+            this.sendMessageToServer('handshake', { sessionId: clientId, clientId });
         });
 
         this._socket = socket;
