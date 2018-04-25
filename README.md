@@ -8,25 +8,24 @@ This class in turn uses the `BSClientSocket` class to communicate right out of t
 
 You simply extend from `AbstractBSClient`, or use the provided `EventBSClient`, and you're away laughing.
 
-## Session Ids and You
+## Identifying and tracking clients
 
-The `userBotSessionId` is the most important property of the whole BotSocket client system.
-BotSocket servers need a way to reference individual clients that are connected to them.
+The `clientId` is the most important property of the whole BotSocket client system.
+BotSocket servers need a way to reference and track individual clients that are connected to them.
 
-By default, the BotSocket server will provide connecting clients with a newly-generated `sessionId`,
+By default, the BotSocket server will provide connecting clients with a newly-generated `clientId`,
 as part of the BotSocket server's handshake.
 
-If however a connecting BotSocket client includes the `session` GET parameter,
-then that value will be used as the client's `sessionId`.
+If however a connecting BotSocket client includes the `clientId` GET parameter,
+then that value will be used as the client's `clientId`.
 
 This is not something you provide yourself in the BotSocket server connection URL.
-Instead, you pass the desired `sessionId` value to the `BSClientSocket#connect` 
-& `BSClientSocket#reconnect` functions. 
+Instead, you pass the desired `clientId` value to the `BSClientSocket#connect` & `BSClientSocket#reconnect` functions. 
 
 As part of `AbstractBSClient`'s implementation, whenever a call to `BSClientSocket#connect()` or `BSClientSocket#reconnect()`
-is made, the result of `get AbstractBSClient#userBotSessionId()` is passed as the `sessionId` parameter.
+is made, the result of `get AbstractBSClient#clientId()` is passed as the `clientId` parameter.
 
-This makes controlling sessions easy, as you can simply override the getter & setter functions for `AbstractBSClient#userBotSessionId`.
+This makes controlling sessions easy, as you can simply override the getter & setter functions for `AbstractBSClient#clientId`.
 
 For example, here's what a basic cookie-based session management implementation could look like:
 
@@ -40,7 +39,7 @@ class CookieBSClient extends EventBSClient {
      * @return {string}
      * @override
      */
-    get userBotSessionId() {
+    get clientId() {
         return Cookie.get('user-bot-session');
     }
 
@@ -49,15 +48,14 @@ class CookieBSClient extends EventBSClient {
      * @param {string} session
      * @override
      */
-    set userBotSessionId(session) {
+    set clientId(session) {
         Cookie.set('user-bot-session', session, { path: '/', expires: 7 });
     }
     // endregion
 }
 ```
 
-`AbstractBSClient`'s default implementation of these methods uses the `AbstractBSClient#_userBotSessionId` field to
-track clients session.
+`AbstractBSClient`'s default implementation of these methods uses the `AbstractBSClient#_clientId` field to track clients.
 
 ## API & Classes
 
@@ -66,7 +64,7 @@ track clients session.
 This class lies at the heart of BotSocket clients.
 
 It manages the actual socket connection to the BotSocket server, emitting events where appropriate.
-It also handles the initial handshaking with the server, passing it the sessionId as both a url parameter and in the client handshake.
+It also handles the initial handshaking with the server, passing it the clientId as both a url parameter and in the client handshake.
 
 When the socket opens, `BSClientSocket#E_SOCKET_OPEN` is emitted.  
 When the socket closes, `BSClientSocket#E_SOCKET_CLOSE` is emitted.  
@@ -78,7 +76,7 @@ When the socket receives a new message, `BSClientSocket#E_SOCKET_MESSAGE` is emi
 This class provides a solid implementation for BotSocket clients to build off.
 
 Out of the box, `AbstractBSClient` handles managing a `BSClientSocket` instance,
-timed automatic reconnection, making calls to render status messages, and basic botUserSessionId tracking. 
+timed automatic reconnection, making calls to render status messages, and basic client tracking. 
 
 When extending off `AbstractBSClient`, there are two abstract protected methods that must be implemented:
 `AbstractBSClient#_renderStatusUpdate` & `AbstractBSClient#_renderLetter`.
@@ -97,7 +95,7 @@ Here's an example of this method in use in `AbstractBSClient#_reconnectCountdown
  */
 _reconnectCountdown(countdown) {
     if (countdown <= 0) {
-        this._bsClientSocket.reconnect(this.userBotSessionId);
+        this._bsClientSocket.reconnect(this.clientId);
         this._renderStatusUpdate('reconnecting...', 'warning');
         
         return;
@@ -172,7 +170,7 @@ This class is an additional extra that can be used to quickly add support for pl
 
 - Add `ClientNotifier` class, that handles notifications. POC is done, just need to clean up.
 - Refactor status messages a bit; we should either take a localisation map, or do something else.
-- Refactor all `session` stuff to be `userBotSessionId`, asap.
+- Refactor all `session` stuff to be `clientId`, asap.
 - Consider defining a `SessionManager` interface/class, so that sessions can be handled with Dependency Injection pattern.
 - Sort out `'senderClassification'` stuff, and add note about how to use `getMessageSenderClassification`.  
 - Look into switching/converting to typescript?

@@ -57,7 +57,11 @@ export declare namespace BotSocket {
             }
 
             interface ClientHandshakeData {
+                /**
+                 * @deprecated in favor of clientId
+                 */
                 sessionId: string;
+                clientId: string;
                 supports: Array<string>;
                 timezone?: string;
             }
