@@ -10,10 +10,10 @@ class EventBSClient extends AbstractBSClient {
     /**
      *
      * @param {string} bsUrl
-     * @param {?string} [userBotSessionId=null]
+     * @param {?string} [clientId=null] the id of the client, to allow identification and tracking server-side.
      */
-    constructor(bsUrl, userBotSessionId = null) {
-        super(bsUrl, userBotSessionId);
+    constructor(bsUrl, clientId = null) {
+        super(bsUrl, clientId);
 
         /**
          *
