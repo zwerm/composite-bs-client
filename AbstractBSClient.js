@@ -160,6 +160,10 @@ class AbstractBSClient {
                 this._processServerHandshake((/** @type {BotSocket.Protocol.Messages.ServerHandshake} */ message).data);
                 break;
             case 'render-messages':
+                console.warn(
+                    'the "render-messages" request type is deprecated - "render-letter" should be used instead.',
+                    'please let the BotSocket server know, so that they can correct this asap!'
+                );
                 this._processRenderMessages((/** @type {BotSocket.Protocol.Messages.RenderMessages} */ message).data);
                 break;
             case 'render-letter':
