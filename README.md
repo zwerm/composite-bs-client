@@ -173,5 +173,6 @@ This class is an additional extra that can be used to quickly add support for pl
 - Add `ClientNotifier` class, that handles notifications. POC is done, just need to clean up.
 - Refactor status messages a bit; we should either take a localisation map, or do something else.
 - Refactor all `session` stuff to be `userBotSessionId`, asap.
+- Consider defining a `SessionManager` interface/class, so that sessions can be handled with Dependency Injection pattern.
 - Sort out `'senderClassification'` stuff, and add note about how to use `getMessageSenderClassification`.  
 - Look into switching/converting to typescript?
