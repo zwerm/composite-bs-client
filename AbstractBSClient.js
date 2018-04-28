@@ -236,10 +236,9 @@ class AbstractBSClient {
             from: 'user',
             query,
             text,
-            data: {
-                senderId: this.clientId,
-                ...data
-            },
+            data: Object.assign({
+                senderId: this.clientId
+            }, data),
             timezone: this.timezone
         });
     }
