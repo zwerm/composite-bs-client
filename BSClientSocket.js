@@ -264,10 +264,16 @@ class BSClientSocket extends EventEmitter {
      * @private
      */
     _handleSocketMessaged(messageEvent) {
+        let data = null;
+
         try {
-            this._emitMessaged(JSON.parse(messageEvent.data));
+            data = JSON.parse(messageEvent.data);
         } catch (error) {
             console.error('server sent malformed json:', messageEvent.data);
+        }
+
+        if (data) {
+            this._emitMessaged(data);
         }
     }
 
