@@ -29,7 +29,7 @@ This makes controlling sessions easy, as you can simply override the getter & se
 
 For example, here's what a basic cookie-based session management implementation could look like:
 
-```ecmascript 6
+```javascript
 const Cookie = require('js-cookie');
 
 class CookieBSClient extends EventBSClient {
@@ -86,7 +86,7 @@ When extending off `AbstractBSClient`, there are two abstract protected methods 
 This method is passed a status message, and the level of that message.
 
 Here's an example of this method in use in `AbstractBSClient#_reconnectCountdown()`: 
-```ecmascript 6
+```javascript
 /**
  * The countdown to when to attempt reconnection to the server
  *
@@ -131,7 +131,7 @@ The implementation of these two methods depend greatly on the role of the BotSoc
 For example, this package includes `EventBSClient`, who's implementation of the above two abstract methods
 just emits them as events, like so:
 
-```ecmascript 6
+```javascript
 /**
  * @inheritDoc
  *
