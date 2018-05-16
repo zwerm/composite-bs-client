@@ -204,11 +204,12 @@ class BSClientSocket extends EventEmitter {
      * setting up the relevant event handlers, and sending handshakes.
      *
      * @param {string} clientId the id of the client, to allow identification and tracking server-side.
+     * @param {boolean} [sendHandshake=true] if `true`, handshake message will be sent automatically
      *
      * @return {WebSocket}
      * @private
      */
-    _newSocket(clientId) {
+    _newSocket(clientId, sendHandshake = true) {
         clientId = clientId || '';
 
         const socket = new WebSocket(`${this._bsUrl}?clientId=${clientId}&session=${clientId}`);
@@ -224,7 +225,9 @@ class BSClientSocket extends EventEmitter {
 
             console.log('socket opened');
 
-            this.sendMessageToServer('handshake', { sessionId: clientId, clientId });
+            if (sendHandshake) {
+                this.sendMessageToServer('handshake', { sessionId: clientId, clientId });
+            }
         });
 
         this._socket = socket;
