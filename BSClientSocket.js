@@ -174,8 +174,9 @@ class BSClientSocket extends EventEmitter {
      * Attempts to reconnect to the BotSocket server by instancing a new socket.
      *
      * @param {string} clientId the id of the client, to allow identification and tracking server-side.
+     * @param {boolean} [sendHandshake=true] if `true`, handshake message will be sent automatically
      */
-    reconnect(clientId) {
+    reconnect(clientId, sendHandshake = true) {
         this.connect(clientId);
     }
 
@@ -183,10 +184,11 @@ class BSClientSocket extends EventEmitter {
      * Attempts to connect to the BotSocket server by instancing a new socket.
      *
      * @param {string} clientId the id of the client, to allow identification and tracking server-side.
+     * @param {boolean} [sendHandshake=true] if `true`, handshake message will be sent automatically
      */
-    connect(clientId) {
+    connect(clientId, sendHandshake = true) {
         // todo: test about closing the socket if it's already connected/open
-        this._newSocket(clientId);
+        this._newSocket(clientId, sendHandshake);
     }
 
     /**
