@@ -1,10 +1,10 @@
-const Leaf = require('./Leaf');
+const BSClientLeaf = require('./BSClientLeaf');
 
 /**
  * `Leaf` that scrolls to the bottom of
  * an element when a letter is rendered.
  */
-class ScrollToBottomOnLetterLeaf extends Leaf {
+class ScrollToBottomOnLetterLeaf extends BSClientLeaf {
     /**
      *
      * @param {HTMLElement} scrollElement

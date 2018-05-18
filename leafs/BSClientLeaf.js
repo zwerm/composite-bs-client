@@ -3,7 +3,7 @@ const moment = require('moment');
 /**
  *
  */
-class Leaf {
+class BSClientLeaf {
     constructor() {
         /**
          *
@@ -135,4 +135,4 @@ class Leaf {
     }
 }
 
-module.exports = Leaf;
+module.exports = BSClientLeaf;

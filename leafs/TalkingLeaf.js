@@ -1,10 +1,10 @@
-const Leaf = require('./Leaf');
+const BSClientLeaf = require('./BSClientLeaf');
 const ClientMouth = require('./../ClientMouth');
 
 /**
  * `Leaf` that speaks `StaMP` messages (that have audio).
  */
-class TalkingLeaf extends Leaf {
+class TalkingLeaf extends BSClientLeaf {
     /**
      *
      * @param {AudioContext} [audioContext=new AudioContext()]

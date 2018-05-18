@@ -2,7 +2,7 @@
 const AbstractMethodCalledError = require('./../../exceptions/AbstractMethodCalledError');
 // endregion
 
-const Leaf = require('./../Leaf');
+const BSClientLeaf = require('../BSClientLeaf');
 
 /**
  * Abstract `Leaf` that handles managing & providing a `userId` as and
@@ -11,10 +11,10 @@ const Leaf = require('./../Leaf');
  * Create a new `Leaf` extending from this class, implement the abstract methods,
  * and you'll be rubbing elbows with the finest, having crumpets with her highness.
  *
- * @extends {Leaf}
+ * @extends {BSClientLeaf}
  * @abstract
  */
-class AbstractUserIdLeaf extends Leaf {
+class AbstractUserIdLeaf extends BSClientLeaf {
     // region getters & setters
     /**
      * Gets the id of the user that the BotSocket client is currently representing.
