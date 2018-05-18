@@ -11,7 +11,31 @@ class BSClientLeaf {
          * @private
          */
         this._userId = null;
+        /**
+         *
+         * @type {?BSClientBush}
+         * @private
+         */
+        this._bush = null;
     }
+
+    // region register & deregister
+    /**
+     *
+     * @param {BSClientBush} bush
+     */
+    register(bush) {
+        this._bush = bush;
+    }
+
+    /**
+     *
+     */
+    deregister() {
+        this._bush = null;
+    }
+
+    // endregion
 
     /**
      *
