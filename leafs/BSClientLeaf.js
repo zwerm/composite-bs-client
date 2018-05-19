@@ -81,15 +81,6 @@ class BSClientLeaf {
     }
 
     /**
-     * Processes the data returned by the BotSocket server as part of it's handshaking.
-     *
-     * @param {BotSocket.Protocol.Messages.ServerHandshakeData} serverHandshake
-     */
-    processServerHandshake(serverHandshake) {
-        // nothing to do
-    }
-
-    /**
      * Supplements the data that's going to be sent as part of a BotSocket `ClientHandshake`.
      *
      * The value returned by the method of this method on a `Leaf` called prior to this
@@ -123,6 +114,15 @@ class BSClientLeaf {
      */
     supplementStaMPQuery(query) {
         return query;
+    }
+
+    /**
+     * Processes the data provided by the BotSocket server as part of it's handshaking.
+     *
+     * @param {BotSocket.Protocol.Messages.ServerHandshakeData} serverHandshake
+     */
+    processServerHandshake(serverHandshake) {
+        // nothing to do
     }
 
     /**

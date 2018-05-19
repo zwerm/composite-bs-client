@@ -129,12 +129,6 @@ This method takes no parameters.
 
 This method doesn't return anything.
 
-#### `processServerHandshake(serverHandshake: BotSocket.Protocol.Messages.ServerHandshakeData): void`
-
-This method is for processing the data returned by the BotSocket server as part of it's handshaking.
-
-The `serverHandshake: BotSocket.Protocol.Messages.ServerHandshakeData` parameter contains the data passed by the server.
-
 #### `supplementClientHandshake(clientHandshake: BotSocket.Protocol.Messages.ClientHandshakeData): BotSocket.Protocol.Messages.ClientHandshakeData`
 
 This method is for supplementing the data that's going to be sent as part of a BotSocket `ClientHandshake`.
@@ -163,6 +157,12 @@ const lastResult = arguments[arguments.length - 1];
 
 Keep in mind that `StaMP` query messages have a `data` field of type object, and that `Object.assign` *doesn't* merge child object properties.
 If you implement this method, you must make sure to merge the `data` the field as well. See `AbstractUserIdLeaf` for an example of this.
+
+#### `processServerHandshake(serverHandshake: BotSocket.Protocol.Messages.ServerHandshakeData): void`
+
+This method is for processing the data returned by the BotSocket server as part of it's handshaking.
+
+The `serverHandshake: BotSocket.Protocol.Messages.ServerHandshakeData` parameter contains the data passed by the server.
 
 #### `processRenderLetterRequest(renderLetterData: BotSocket.Protocol.Messages.RenderLetterData): void`
 
