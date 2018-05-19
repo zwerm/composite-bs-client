@@ -46,7 +46,7 @@ class BSClientBush {
     }
 
     /**
-     * Deregisters a {@link BSClientLeaf} from this `BSClientBush`.
+     * De-registers a {@link BSClientLeaf} from this `BSClientBush`.
      *
      * @param {BSClientLeaf} leaf
      */
@@ -70,8 +70,8 @@ class BSClientBush {
     _callMethodOverBranch(methodName, methodArgs) {
         const methodBranch = this._buildMethodBranch(methodName);
 
-        return methodBranch.length
-            ? methodBranch.reduce((i, leaf) => leaf[methodName](...methodArgs, i), null)
+        return methodBranch.length // if there are method implementations, call them; otherwise just call the fallback
+            ? methodBranch.reduce((returnedValue, leaf) => leaf[methodName](...methodArgs, returnedValue), null)
             : this._superLeaf[methodName](...methodArgs);
     }
 
