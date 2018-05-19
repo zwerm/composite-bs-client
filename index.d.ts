@@ -38,10 +38,6 @@ export declare namespace BotSocket {
                 | 'render-letter'
                 ;
 
-            export type RenderRequest =
-                | 'render-letter'
-                ;
-
             interface RequestMessage {
                 request: RequestType;
                 data: RequestData;
@@ -111,23 +107,20 @@ export declare namespace BotSocket {
             }
 
             // endregion
-            // region render messages
-            interface Render extends RequestMessage {
-                request: RenderRequest;
+            // region RenderLetter
+            interface RenderLetter extends RequestMessage {
+                request: 'render-letter';
+
                 data: RenderLetterData;
             }
 
-            interface RenderLetterData {
+            interface RenderLetterData extends RequestData {
                 /**
                  * @deprecated in favor of the letter property
                  */
                 messages: StaMP.Protocol.Letter;
 
                 letter: StaMP.Protocol.Letter;
-            }
-
-            interface RenderLetter extends Render {
-                request: 'render-letter';
             }
 
             // endregion
