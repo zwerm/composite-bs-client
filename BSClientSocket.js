@@ -23,7 +23,7 @@ class BSClientSocket extends EventEmitter {
         this._bsUrl = bsUrl;
         /**
          *
-         * @type {WebSocket}
+         * @type {?WebSocket}
          * @private
          */
         this._socket = null;
@@ -77,7 +77,7 @@ class BSClientSocket extends EventEmitter {
      * @return {boolean}
      */
     get isConnected() {
-        return this._socket.readyState === this._socket.OPEN;
+        return this._socket && this._socket.readyState === this._socket.OPEN;
     }
 
     // endregion
@@ -194,7 +194,7 @@ class BSClientSocket extends EventEmitter {
      * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent}
      */
     close(code) {
-        this._socket.close(code);
+        this._socket && this._socket.close(code);
     }
 
     /**
