@@ -50,7 +50,7 @@ export declare namespace BotSocket {
             interface RequestData {
             }
 
-            // region unique messages
+            // region ClientHandshake
             interface ClientHandshake extends RequestMessage {
                 request: 'handshake';
                 data: ClientHandshakeData;
@@ -69,6 +69,8 @@ export declare namespace BotSocket {
                 timezone?: string;
             }
 
+            // endregion
+            // region ServerHandshake
             interface ServerHandshake extends RequestMessage {
                 request: 'handshake';
                 data: ServerHandshakeData;
@@ -87,6 +89,8 @@ export declare namespace BotSocket {
                 retryWaitTime: number;
             }
 
+            // endregion
+            // region SubmitQuery
             interface SubmitQuery extends RequestMessage {
                 request: 'submit-query';
                 data: SubmitQueryData;
@@ -95,7 +99,8 @@ export declare namespace BotSocket {
             interface SubmitQueryData extends StaMP.Protocol.Messages.StandardisedQueryMessage {
 
             }
-
+            // endregion
+            // region SubmitEvent
             interface SubmitEvent extends RequestMessage {
                 request: 'submit-event';
                 data: SubmitEventData;
