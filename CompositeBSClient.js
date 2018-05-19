@@ -221,6 +221,16 @@ class CompositeBSClient {
     }
 
     /**
+     * Supplements the data that's going to be sent as part of a BotSocket `ClientHandshake`.
+     *
+     * @return {BotSocket.Protocol.Messages.ClientHandshakeData}
+     * @private
+     */
+    _supplementClientHandshake() {
+        return this._bsClientBush.supplementClientHandshake({ userId: this._defaultUserId });
+    }
+
+    /**
      * Supplements a StaMP query message that's going to be sent to the BotSocket server.
      *
      * @param {StaMP.Protocol.QueryMessage} query
@@ -230,16 +240,6 @@ class CompositeBSClient {
      */
     _supplementStaMPQuery(query) {
         return this._bsClientBush.supplementStaMPQuery(query);
-    }
-
-    /**
-     * Supplements the data that's going to be sent as part of a BotSocket `ClientHandshake`.
-     *
-     * @return {BotSocket.Protocol.Messages.ClientHandshakeData}
-     * @private
-     */
-    _supplementClientHandshake() {
-        return this._bsClientBush.supplementClientHandshake({ userId: this._defaultUserId });
     }
 
     /**
