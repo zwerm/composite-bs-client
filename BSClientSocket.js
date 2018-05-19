@@ -173,22 +173,18 @@ class BSClientSocket extends EventEmitter {
     /**
      * Attempts to reconnect to the BotSocket server by instancing a new socket.
      *
-     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
-     * @param {boolean} [sendHandshake=true] if `true`, handshake message will be sent automatically
+     * @see {@link BSClientSocket#connect BSClientSocket.connect}
      */
-    reconnect(clientId, sendHandshake = true) {
-        this.connect(clientId);
+    reconnect() {
+        this.connect();
     }
 
     /**
      * Attempts to connect to the BotSocket server by instancing a new socket.
-     *
-     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
-     * @param {boolean} [sendHandshake=true] if `true`, handshake message will be sent automatically
      */
-    connect(clientId, sendHandshake = true) {
+    connect() {
         // todo: test about closing the socket if it's already connected/open
-        this._newSocket(clientId, sendHandshake);
+        this._newSocket();
     }
 
     /**
@@ -203,18 +199,13 @@ class BSClientSocket extends EventEmitter {
 
     /**
      * Instantiates a new WebSocket to connect to a BotSocket server,
-     * setting up the relevant event handlers, and sending handshakes.
-     *
-     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
-     * @param {boolean} [sendHandshake=true] if `true`, handshake message will be sent automatically
+     * setting up the relevant event handlers, but not sending handshake.
      *
      * @return {WebSocket}
      * @private
      */
-    _newSocket(clientId, sendHandshake = true) {
-        clientId = clientId || '';
-
-        const socket = new WebSocket(`${this._bsUrl}?clientId=${clientId}&session=${clientId}`);
+    _newSocket() {
+        const socket = new WebSocket(`${this._bsUrl}`);
 
         socket.addEventListener('error', event => this._handleSocketErrored(event));
 
@@ -226,13 +217,11 @@ class BSClientSocket extends EventEmitter {
             socket.addEventListener('message', event => this._handleSocketMessaged(event));
 
             console.log('socket opened');
-
-            if (sendHandshake) {
-                this.sendMessageToServer('handshake', { sessionId: clientId, clientId });
-            }
         });
 
         this._socket = socket;
+
+        return socket;
     }
 
     // region handle socket events
