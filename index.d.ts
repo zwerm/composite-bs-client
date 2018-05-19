@@ -42,7 +42,7 @@ export declare namespace BotSocket {
                 | 'render-letter'
                 ;
 
-            interface StandardRequest {
+            interface RequestMessage {
                 request: Request;
                 data: StandardData;
             }
@@ -51,7 +51,7 @@ export declare namespace BotSocket {
             }
 
             // region unique messages
-            interface ClientHandshake extends StandardRequest {
+            interface ClientHandshake extends RequestMessage {
                 request: 'handshake';
                 data: ClientHandshakeData;
             }
@@ -66,7 +66,7 @@ export declare namespace BotSocket {
                 timezone?: string;
             }
 
-            interface ServerHandshake extends StandardRequest {
+            interface ServerHandshake extends RequestMessage {
                 request: 'handshake';
                 data: ServerHandshakeData;
             }
@@ -80,7 +80,7 @@ export declare namespace BotSocket {
                 retryWaitTime: number;
             }
 
-            interface SubmitQuery extends StandardRequest {
+            interface SubmitQuery extends RequestMessage {
                 request: 'submit-query';
                 data: SubmitQueryData;
             }
@@ -91,7 +91,7 @@ export declare namespace BotSocket {
 
             // endregion
             // region render messages
-            interface Render extends StandardRequest {
+            interface Render extends RequestMessage {
                 request: RenderRequest;
                 data: RenderData;
             }

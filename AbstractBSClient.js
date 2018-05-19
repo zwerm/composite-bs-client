@@ -156,7 +156,7 @@ class AbstractBSClient {
     // endregion
     /**
      *
-     * @param {BotSocket.Protocol.Messages.StandardRequest} message
+     * @param {BotSocket.Protocol.Messages.RequestMessage} message
      *
      * @private
      */
