@@ -189,6 +189,7 @@ Here is a brief overview of the leafs included in this package:
 | `ScrollToPositionOnLetterLeaf` | Leaf that scrolls to a position of an `HTMLElement` when a `render-letter` request arrives.
 | `ScrollToTopOnLetterLeaf`      | Leaf that scrolls to the top of an `HTMLElement` when a `render-letter` request arrives.
 | `EmitStatusMessageEventsLeaf`  | Leaf that emits status messages events based on the usual operations of a `CompositeBSClient`, via an `EventEmitter`.
+| `EmitLetterMessageEventsLeaf`  | Leaf that emits letter messages events based on the usual operations of a `CompositeBSClient`, via an `EventEmitter`.
 | `TalkingLeaf`                  | Leaf that speaks `StaMP` messages (that have audio).
 
 ## Identifying the user of a client
