@@ -7,12 +7,6 @@ class BSClientLeaf {
     constructor() {
         /**
          *
-         * @type {?string}
-         * @private
-         */
-        this._userId = null;
-        /**
-         *
          * @type {?BSClientBush}
          * @private
          */
@@ -80,7 +74,7 @@ class BSClientLeaf {
      * @param {BotSocket.Protocol.Messages.ServerHandshakeData} serverHandshake
      */
     processServerHandshake(serverHandshake) {
-        this._userId = serverHandshake.userId || serverHandshake.clientId;
+        // nothing to do
     }
 
     /**
@@ -116,17 +110,7 @@ class BSClientLeaf {
      * @return {StaMP.Protocol.Messages.StandardisedQueryMessage}
      */
     supplementStaMPQuery(query) {
-        return Object.assign(
-            {},
-            query,
-            {
-                data: Object.assign(
-                    {},
-                    query.data,
-                    { senderId: this._userId }
-                )
-            }
-        );
+        return query;
     }
 
     /**
