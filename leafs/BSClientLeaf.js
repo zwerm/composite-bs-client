@@ -7,26 +7,26 @@ class BSClientLeaf {
     constructor() {
         /**
          *
-         * @type {?BSClientBush}
-         * @private
+         * @type {?CompositeBSClient}
+         * @protected
          */
-        this._bush = null;
+        this._compositeBSClient = null;
     }
 
     // region register & deregister
     /**
      *
-     * @param {BSClientBush} bush
+     * @param {CompositeBSClient} compositeBSClient
      */
-    register(bush) {
-        this._bush = bush;
+    register(compositeBSClient) {
+        this._compositeBSClient = compositeBSClient;
     }
 
     /**
      *
      */
     deregister() {
-        this._bush = null;
+        this._compositeBSClient = null;
     }
 
     // endregion

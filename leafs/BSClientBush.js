@@ -42,7 +42,7 @@ class BSClientBush {
     registerLeaf(leaf) {
         this._leafs.push(leaf);
 
-        leaf.register(this);
+        leaf.register(this._compositeBSClient);
     }
 
     /**
