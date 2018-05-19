@@ -186,12 +186,18 @@ class CompositeBSClient {
     /**
      * Sends a query message to the BotSocket server.
      *
-     * Unless provided in the `data` parameter, `AbstractBSClient#clientId`
-     * will be used for the required `data.senderId` property, via the spread operator.
+     * The query message will be supplemented by any registered leafs that implement the
+     * {@link BSClientLeaf#supplementStaMPQuery BSClientLeaf.supplementStaMPQuery} method.
+     *
+     * The query's `data.senderId` property will be the default user id that was
+     * provided by the BotSocket server as part of it's handshaking, unless overridden
+     * by a registered `leaf`.
      *
      * @param {string} query
      * @param {string} [text=query]
      * @param {StaMP.Protocol.Messages.StandardisedQueryMessageData|Object} [data={}]
+     *
+     * @see {@link BSClientLeaf#supplementStaMPQuery BSClientLeaf.supplementStaMPQuery}
      */
     sendQuery(query, text = query, data = {}) {
         this._sendQuery(this._supplementStaMPQuery({
