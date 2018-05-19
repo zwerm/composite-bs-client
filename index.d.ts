@@ -64,7 +64,6 @@ export declare namespace BotSocket {
                  */
                 sessionId: string;
                 clientId: string;
-                supports: Array<string>;
                 timezone?: string;
             }
 
