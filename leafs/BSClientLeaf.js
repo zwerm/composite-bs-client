@@ -8,11 +8,21 @@ class BSClientLeaf {
         /**
          *
          * @type {?CompositeBSClient}
-         * @protected
+         * @private
          */
         this._compositeBSClient = null;
     }
 
+    // region getters & setters
+    /**
+     *
+     * @return {?CompositeBSClient}
+     */
+    get bsClient() {
+        return this._compositeBSClient;
+    }
+
+    // endregion
     // region register & deregister
     /**
      *

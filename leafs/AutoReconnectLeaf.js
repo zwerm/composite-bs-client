@@ -136,7 +136,7 @@ class AutoReconnectLeaf extends BSClientLeaf {
      */
     _reconnectCountdown(countdown) {
         if (countdown <= 0) {
-            this._compositeBSClient.reconnect();
+            this.bsClient.reconnect();
 
             return;
         }
