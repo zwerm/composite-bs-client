@@ -221,6 +221,7 @@ class CompositeBSClient {
     }
 
     /**
+     * Supplements a StaMP query message that's going to be sent to the BotSocket server.
      *
      * @param {StaMP.Protocol.QueryMessage} query
      *
@@ -231,6 +232,8 @@ class CompositeBSClient {
     }
 
     /**
+     * Supplements the data that's going to be sent as part of a BotSocket `ClientHandshake`.
+     *
      * @return {BotSocket.Protocol.Messages.ClientHandshakeData}
      */
     supplementClientHandshake() {
@@ -238,7 +241,7 @@ class CompositeBSClient {
     }
 
     /**
-     * Processes the result of handshaking with the BotSocket server.
+     * Processes the data provided by the BotSocket server as part of it's handshaking.
      *
      * @param {BotSocket.Protocol.Messages.ServerHandshakeData} serverHandshake
      * @private
