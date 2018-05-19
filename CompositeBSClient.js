@@ -196,7 +196,7 @@ class CompositeBSClient {
     sendQuery(query, text = query, data = {}) {
         (/** @type {BotSocket.ClientSocket} */this._bsClientSocket).sendMessageToServer(
             'submit-query',
-            this.supplementStaMPQuery({
+            this._supplementStaMPQuery({
                 $StaMP: true,
                 type: 'query',
                 from: 'user',
@@ -226,8 +226,9 @@ class CompositeBSClient {
      * @param {StaMP.Protocol.QueryMessage} query
      *
      * @return {StaMP.Protocol.QueryMessage}
+     * @private
      */
-    supplementStaMPQuery(query) {
+    _supplementStaMPQuery(query) {
         return this._bsClientBush.supplementStaMPQuery(query);
     }
 
