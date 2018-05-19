@@ -19,7 +19,7 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
         /**
          *
          * @type {module:events.internal.EventEmitter}
-         * @private
+         * @protected
          */
         this._emitter = emitter;
     }
