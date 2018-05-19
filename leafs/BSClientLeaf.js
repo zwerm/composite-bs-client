@@ -1,5 +1,3 @@
-const moment = require('moment');
-
 /**
  *
  */
@@ -42,37 +40,41 @@ class BSClientLeaf {
     // endregion
 
     /**
+     * Called by the `CompositeBSClient` before it tries to connect to the BotSocket server.
      *
-     * @param {boolean} isReconnecting
+     * @param {boolean} isReconnecting if `true`, the connection attempt is an attempt to re-connect.
      */
     preConnect(isReconnecting) {
         // nothing to do
     }
 
     /**
-     *
+     * Called by the `CompositeBSClient` after it has successfully connected to the BotSocket server.
      */
     postConnect() {
         // nothing to do
     }
 
     /**
-     * @param {number} disconnectCode
+     * Called by the `CompositeBSClient` before it tries to disconnect from the BotSocket server.
+     *
+     * @param {number} disconnectCode the code that will be provided as the reason for disconnection.
      */
     preDisconnect(disconnectCode) {
         // nothing to do
     }
 
     /**
+     * Called by the `CompositeBSClient` after it has been disconnected from the BotSocket server.
      *
-     * @param {number} disconnectCode
+     * @param {number} disconnectCode the code that was provided as the reason for disconnection.
      */
     postDisconnect(disconnectCode) {
         // nothing to do
     }
 
     /**
-     *
+     * Called by the `CompositeBSClient` when the socket connection errors out.
      */
     errored() {
         // nothing to do
@@ -115,9 +117,9 @@ class BSClientLeaf {
      * const lastResult = arguments[arguments.length - 1];
      * ```
      *
-     * @param {StaMP.Protocol.Messages.StandardisedQueryMessage} query
+     * @param {StaMP.Protocol.QueryMessage} query
      *
-     * @return {StaMP.Protocol.Messages.StandardisedQueryMessage}
+     * @return {StaMP.Protocol.QueryMessage}
      */
     supplementStaMPQuery(query) {
         return query;
