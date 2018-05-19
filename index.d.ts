@@ -46,10 +46,10 @@ export declare namespace BotSocket {
 
             interface RequestMessage {
                 request: RequestType;
-                data: StandardData;
+                data: RequestData;
             }
 
-            interface StandardData {
+            interface RequestData {
             }
 
             // region unique messages
