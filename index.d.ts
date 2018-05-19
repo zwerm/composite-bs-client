@@ -32,7 +32,7 @@ export declare namespace BotSocket {
             }
 
             export type Request =
-                'handshake'
+                | 'handshake'
                 | 'submit-query'
                 | 'submit-event'
                 | 'render-messages'
