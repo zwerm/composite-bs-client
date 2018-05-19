@@ -4,7 +4,7 @@ const BSClientLeaf = require('./BSClientLeaf');
 
 /**
  * `Leaf` that emits status messages events based on the
- * usual operations of a BotSocket Client, via an event emitter.
+ * usual operations of a `CompositeBSClient`, via an `EventEmitter`.
  *
  * @extends {BSClientLeaf}
  */

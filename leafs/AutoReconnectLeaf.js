@@ -3,7 +3,7 @@ const { EventEmitter } = require('events');
 const BSClientLeaf = require('./BSClientLeaf');
 
 /**
- * A `Leaf` for handling automatic reconnects when the
+ * A `Leaf` for handling automatic reconnects after a delay when the
  * `CompositeBSClient` disconnects from the BotSocket server.
  *
  * If the `CompositeBSClient` disconnects with a code that's not
