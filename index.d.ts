@@ -60,10 +60,14 @@ export declare namespace BotSocket {
 
             interface ClientHandshakeData {
                 /**
-                 * @deprecated in favor of clientId
+                 * @deprecated in favor of userId
                  */
                 sessionId: string;
+                /**
+                 * @deprecated in favor of userId
+                 */
                 clientId: string;
+                userId: string;
                 timezone?: string;
             }
 
@@ -74,10 +78,14 @@ export declare namespace BotSocket {
 
             interface ServerHandshakeData {
                 /**
-                 * @deprecated in favor of clientId
+                 * @deprecated in favor of userId
                  */
                 sessionId: string;
+                /**
+                 * @deprecated in favor of userId
+                 */
                 clientId: string;
+                userId: string;
                 retryWaitTime: number;
             }
 
