@@ -134,7 +134,7 @@ class BSClientSocket extends EventEmitter {
     /**
      * Emits an event signaling that the socket was messaged by the BotSocket server.
      *
-     * @param {BotSocket.Protocol.Messages.StandardRequest} message
+     * @param {BotSocket.Protocol.Messages.RequestMessage} message
      *
      * @fires BSClientSocket#E_SOCKET_MESSAGE
      * @private
@@ -144,7 +144,7 @@ class BSClientSocket extends EventEmitter {
          * @event BSClientSocket#E_SOCKET_MESSAGE
          * @type {Object}
          *
-         * @property {BotSocket.Protocol.Messages.StandardRequest} E_SOCKET_MESSAGE:message
+         * @property {BotSocket.Protocol.Messages.RequestMessage} E_SOCKET_MESSAGE:message
          */
         this.emit(this.constructor.E_SOCKET_MESSAGE, { message });
     }
@@ -154,8 +154,8 @@ class BSClientSocket extends EventEmitter {
     /**
      * Sends a BotSocket message to the BotSocket server.
      *
-     * @param {BotSocket.Protocol.Messages.Request} request
-     * @param {BotSocket.Protocol.Messages.StandardData} [data={}]
+     * @param {BotSocket.Protocol.Messages.RequestType} request
+     * @param {BotSocket.Protocol.Messages.RequestData} [data={}]
      * @override
      *
      * @throws {SocketNotReadyException} when the socket isn't ready to send messages.

@@ -13,7 +13,7 @@ const BotSocketException = require('./BotSocketException');
 class UnsupportedRequestTypeException extends BotSocketException {
     /**
      *
-     * @param {BotSocket.Protocol.Messages.StandardRequest} receivedMessage
+     * @param {BotSocket.Protocol.Messages.RequestMessage} receivedMessage
      */
     constructor(receivedMessage) {
         super(`request type ${receivedMessage.request} is currently not supported`);
@@ -24,7 +24,7 @@ class UnsupportedRequestTypeException extends BotSocketException {
 
         /**
          *
-         * @type {BotSocketMessageType & BotSocket.Protocol.Messages.StandardRequest}
+         * @type {BotSocketMessageType & BotSocket.Protocol.Messages.RequestMessage}
          * @private
          */
         this._receivedMessage = receivedMessage;
@@ -33,7 +33,7 @@ class UnsupportedRequestTypeException extends BotSocketException {
     // region getters & setters
     /**
      *
-     * @return {BotSocketMessageType & BotSocket.Protocol.Messages.StandardRequest}
+     * @return {BotSocketMessageType & BotSocket.Protocol.Messages.RequestMessage}
      */
     get receivedMessage() {
         return this._receivedMessage;
