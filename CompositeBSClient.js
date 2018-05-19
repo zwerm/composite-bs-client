@@ -194,17 +194,27 @@ class CompositeBSClient {
      * @param {StaMP.Protocol.Messages.StandardisedQueryMessageData|Object} [data={}]
      */
     sendQuery(query, text = query, data = {}) {
+        this._sendQuery(this._supplementStaMPQuery({
+            $StaMP: true,
+            type: 'query',
+            from: 'user',
+            query,
+            text,
+            data: { senderId: this._defaultUserId },
+            timezone: null
+        }));
+    }
+
+    /**
+     * Actually sends a query message to the BotSocket server.
+     *
+     * @param {StaMP.Protocol.QueryMessage} queryMessage
+     * @private
+     */
+    _sendQuery(queryMessage) {
         (/** @type {BotSocket.ClientSocket} */this._bsClientSocket).sendMessageToServer(
             'submit-query',
-            this._supplementStaMPQuery({
-                $StaMP: true,
-                type: 'query',
-                from: 'user',
-                query,
-                text,
-                data: { senderId: this._defaultUserId },
-                timezone: null
-            })
+            queryMessage
         );
     }
 
