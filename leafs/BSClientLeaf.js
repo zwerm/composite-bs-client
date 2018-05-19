@@ -122,26 +122,6 @@ class BSClientLeaf {
     processRenderLetterRequest(renderLetterData) {
         // nothing to do
     }
-
-    /**
-     * Renders status update messages.
-     *
-     * @param {string} status
-     * @param {BotSocket.StatusLevel} level
-     */
-    renderStatus(status, level) {
-        // nothing to do
-    }
-
-    /**
-     *
-     * @param {string} format
-     *
-     * @return {string}
-     */
-    timestamp(format = 'hh:mm:ssa') {
-        return moment().format(format);
-    }
 }
 
 module.exports = BSClientLeaf;
