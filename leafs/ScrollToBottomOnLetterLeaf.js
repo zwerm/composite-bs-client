@@ -69,9 +69,11 @@ class ScrollToBottomOnLetterLeaf extends BSClientLeaf {
     /**
      * @inheritDoc
      *
-     * @param {StaMP.Protocol.Letter} letter
+     * @param {BotSocket.Protocol.Messages.RenderLetterData} renderLetterData
+     * @protected
+     * @override
      */
-    renderLetter(letter) {
+    processRenderLetterRequest(renderLetterData) {
         this._scrollToBottom();
     }
 

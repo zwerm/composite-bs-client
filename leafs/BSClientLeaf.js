@@ -114,11 +114,12 @@ class BSClientLeaf {
     }
 
     /**
-     * Renders a StaMP Letter - a collection of StaMP messages.
+     * Processes a received `render-letter` BotSocket request message.
      *
-     * @param {StaMP.Protocol.Letter} letter
+     * @param {BotSocket.Protocol.Messages.RenderLetterData} renderLetterData
+     * @protected
      */
-    renderLetter(letter) {
+    processRenderLetterRequest(renderLetterData) {
         // nothing to do
     }
 

@@ -61,12 +61,14 @@ class TalkingLeaf extends BSClientLeaf {
     // endregion
 
     /**
-     * Renders a StaMP Letter - a collection of StaMP messages.
+     * @inheritDoc
      *
-     * @param {StaMP.Protocol.Letter} letter
+     * @param {BotSocket.Protocol.Messages.RenderLetterData} renderLetterData
+     * @protected
+     * @override
      */
-    renderLetter(letter) {
-        letter.forEach(message => this._maybeSpeakMessage(message));
+    processRenderLetterRequest(renderLetterData) {
+        renderLetterData.letter.forEach(message => this._maybeSpeakMessage(message));
     }
 
     /**
