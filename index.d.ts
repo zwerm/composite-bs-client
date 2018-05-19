@@ -28,7 +28,7 @@ export declare namespace BotSocket {
                 'handshake': ClientHandshakeData,
                 'submit-query': SubmitQueryData,
                 'submit-event': SubmitEventData,
-                'render-letter': RenderData
+                'render-letter': RenderLetterData
             }
 
             export type RequestType =
@@ -111,10 +111,10 @@ export declare namespace BotSocket {
             // region render messages
             interface Render extends RequestMessage {
                 request: RenderRequest;
-                data: RenderData;
+                data: RenderLetterData;
             }
 
-            interface RenderData {
+            interface RenderLetterData {
                 /**
                  * @deprecated in favor of the letter property
                  */
