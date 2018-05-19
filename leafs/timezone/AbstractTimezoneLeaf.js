@@ -6,7 +6,7 @@ const BSClientLeaf = require('../BSClientLeaf');
 
 /**
  * Abstract `Leaf` that handles managing & providing a `timezone` as and
- * when required during the usual operations of a BotSocket Client.
+ * when required during the usual operations of a `CompositeBSClient`.
  *
  * Create a new `Leaf` extending from this class, implement the abstract methods,
  * and you'll be rubbing elbows with the finest, having crumpets with her highness.
