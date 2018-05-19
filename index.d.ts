@@ -35,12 +35,10 @@ export declare namespace BotSocket {
                 | 'handshake'
                 | 'submit-query'
                 | 'submit-event'
-                | 'render-messages'
                 | 'render-letter'
                 ;
 
             export type RenderRequest =
-                'render-messages'
                 | 'render-letter'
                 ;
 
@@ -121,10 +119,6 @@ export declare namespace BotSocket {
                 messages: StaMP.Protocol.Letter;
 
                 letter: StaMP.Protocol.Letter;
-            }
-
-            interface RenderMessages extends Render {
-                request: 'render-messages';
             }
 
             interface RenderLetter extends Render {
