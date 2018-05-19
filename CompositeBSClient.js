@@ -171,7 +171,7 @@ class CompositeBSClient {
     connect() {
         this._bsClientBush.preConnect(false);
 
-        this._bsClientSocket.connect('ignore', false);
+        this._bsClientSocket.connect();
     }
 
     /**
@@ -180,7 +180,7 @@ class CompositeBSClient {
     reconnect() {
         this._bsClientBush.preConnect(true);
 
-        this._bsClientSocket.connect('ignore', false);
+        this._bsClientSocket.connect();
     }
 
     /**
