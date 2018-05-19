@@ -258,16 +258,6 @@ class CompositeBSClient {
     _processRenderLetterRequest(renderLetterData) {
         this._bsClientBush.processRenderLetterRequest(renderLetterData);
     }
-
-    /**
-     * Renders a StaMP Letter - a collection of StaMP messages.
-     *
-     * @param {StaMP.Protocol.Letter} letter
-     * @protected
-     */
-    _renderLetter(letter) {
-        this._bsClientBush.renderLetter(letter);
-    }
 }
 
 module.exports = CompositeBSClient;
