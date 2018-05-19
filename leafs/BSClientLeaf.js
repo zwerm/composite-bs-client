@@ -129,7 +129,6 @@ class BSClientLeaf {
      * Processes a received `render-letter` BotSocket request message.
      *
      * @param {BotSocket.Protocol.Messages.RenderLetterData} renderLetterData
-     * @protected
      */
     processRenderLetterRequest(renderLetterData) {
         // nothing to do
