@@ -3,13 +3,12 @@ const BSClientLeaf = require('./BSClientLeaf');
 /**
  *
  */
-class BSClientBush extends BSClientLeaf {
+class BSClientBush {
     /**
      *
      * @param {CompositeBSClient} compositeBSClient
      */
     constructor(compositeBSClient) {
-        super();
 
         /**
          *
@@ -19,26 +18,21 @@ class BSClientBush extends BSClientLeaf {
         this._compositeBSClient = compositeBSClient;
         /**
          *
+         * @type {BSClientLeaf}
+         * @private
+         */
+        this._superLeaf = new BSClientLeaf();
+        /**
+         *
          * @type {Array<BSClientLeaf>}
          * @private
          */
         this._leafs = [];
 
-        Object.getOwnPropertyNames(BSClientLeaf.prototype)
+        Object.getOwnPropertyNames(this._superLeaf.constructor.prototype)
               .filter(methodName => methodName !== 'constructor')
               .forEach(methodName => this[methodName] = (...methodArgs) => this._callMethodOverBranch(methodName, methodArgs));
     }
-
-    // region getters & setters
-    /**
-     *
-     * @return {CompositeBSClient}
-     */
-    get bsClient() {
-        return this._compositeBSClient;
-    }
-
-    // endregion
 
     /**
      * Registers a {@link BSClientLeaf} on this `BSClientBush`.
@@ -78,7 +72,7 @@ class BSClientBush extends BSClientLeaf {
 
         return methodBranch.length
             ? methodBranch.reduce((i, leaf) => leaf[methodName](...methodArgs, i), null)
-            : super[methodName](...methodArgs);
+            : this._superLeaf[methodName](...methodArgs);
     }
 
     /**
@@ -94,7 +88,7 @@ class BSClientBush extends BSClientLeaf {
             throw new Error(`bad method name (${methodName})`);
         }
 
-        return this._leafs.filter(leaf => leaf[methodName] !== BSClientLeaf.prototype[methodName]);
+        return this._leafs.filter(leaf => leaf[methodName] !== this._superLeaf.constructor.prototype[methodName]);
     }
 }
 
