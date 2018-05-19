@@ -42,7 +42,7 @@ class CompositeBSClient {
         /**
          *
          * @type {BSClientSocket}
-         * @protected
+         * @private
          */
         this._bsClientSocket = new BSClientSocket(bsUrl);
         /**
@@ -75,7 +75,7 @@ class CompositeBSClient {
     // region handle connected, disconnected, & errored
     /**
      *
-     * @protected
+     * @private
      */
     _handleSocketConnected() {
         this._sendClientHandshake();
@@ -85,7 +85,7 @@ class CompositeBSClient {
     /**
      *
      * @param {number} disconnectCode
-     * @protected
+     * @private
      */
     _handleSocketDisconnected({ disconnectCode }) {
         this._bsClientBush.postDisconnect(disconnectCode);
