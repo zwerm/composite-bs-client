@@ -18,7 +18,7 @@ Here's an example of setting up a `CompositeBSClient` instance with some leafs:
 ```javascript
 const { EventEmitter } = require('events');
 
-const CompositeBSC = require('@zwerm/botsocket-clients/CompositeBSC');
+const CompositeBSClient = require('@zwerm/botsocket-clients/CompositeBSClient');
 
 // region leafs
 const TalkingLeaf = require('@zwerm/botsocket-clients/leafs/TalkingLeaf');
@@ -31,7 +31,12 @@ const EmitStatusMessageEventsLeaf = require('@zwerm/botsocket-clients/leafs/Emit
 const AutoReconnectLeaf = require('@zwerm/botsocket-clients/leafs/AutoReconnectLeaf');
 // endregion
 
-const bsc = new CompositeBSC('ws-url', 'team-id', 'bot-id', 'channel-id');
+const bsc = CompositeBSClient.newForZwermChat(
+    'wss://chat.zwerm.io',
+    'team-id',
+    'bot-id',
+    'channel-id'
+);
 
 const statusEmitter = new EventEmitter();
 
