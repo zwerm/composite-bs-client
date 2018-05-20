@@ -83,11 +83,19 @@ Here is a quick rundown on the methods defined in `BSClientLeaf`, and their comm
 
 #### `register(compositeBSClient: CompositeBSClient): void`
 
-This method registers the leaf to the given `CompositeBSClient`. There is no use case for overriding this method, and is only noted here for completeness.
+This method registers the leaf to the given `CompositeBSClient`.
+
+This method should be used for handling initialisation actions, such as attaching event listeners. 
+
+Remember to call `super.register(compositeBSClient)`, otherwise you risk your leaf not working properly.
 
 #### `deregister(): void`
 
-This method de-registers the leaf from the `CompositeBSClient` it's registered to. These is no use case for overriding this method, and is only noted here for completeness.
+This method de-registers the leaf from the `CompositeBSClient` it's registered to.
+
+This method should be used for handling unwinding actions, such as removing event listeners. 
+
+Remember to call `super.deregister()`, otherwise you risk your leaf not working properly.
 
 #### `preConnect(isReconnecting: boolean): void`
 
