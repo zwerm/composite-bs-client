@@ -42,6 +42,27 @@ class CompositeBSClient {
     }
 
     /**
+     * Instantiates a new `CompositeBClient` to connect to the `ZwermChat` BotSocket server.
+     *
+     * @param {string} baseUrl the base `ZwermChat` BotSocket server url.
+     * @param {string} botTeam the id of the team that the bot being connected to belongs to.
+     * @param {string} botId the id of the bot that is being connected to.
+     * @param {string} channelId the id of the channel of the bot that is being connected to.
+     *
+     * @return {CompositeBSClient}
+     */
+    static newForZwermChat(baseUrl, botTeam, botId, channelId) {
+        return new CompositeBSClient(
+            CompositeBSClient.buildZwermChatUrl(
+                baseUrl,
+                botTeam,
+                botId,
+                channelId
+            )
+        );
+    }
+
+    /**
      *
      * @param {string} bsUrl
      * @param {?string} [defaultUserId=null] The default user id to use, if no registered `Leaf`s override it.
