@@ -26,6 +26,7 @@ const CookieUserIdLeaf = require('@zwerm/botsocket-clients/leafs/userid/CookieUs
 const StaticTimezoneLeaf = require('@zwerm/botsocket-clients/leafs/timezone/StaticTimezoneLeaf');
 const BrowserLocationLeaf = require('@zwerm/botsocket-clients/leafs/location/BrowserLocationLeaf');
 
+const ToggleDisabledOnConnectLeaf = require('@zwerm/botsocket-clients/leafs/ToggleDisabledOnConnectLeaf');
 const ScrollToBottomOnLetterLeaf = require('@zwerm/botsocket-clients/leafs/ScrollToBottomOnLetterLeaf');
 const EmitStatusMessageEventsLeaf = require('@zwerm/botsocket-clients/leafs/EmitStatusMessageEventsLeaf');
 const AutoReconnectLeaf = require('@zwerm/botsocket-clients/leafs/AutoReconnectLeaf');
@@ -44,6 +45,7 @@ bsc.registerLeaf(new TalkingLeaf())
    .registerLeaf(new CookieUserIdLeaf())
    .registerLeaf(new StaticTimezoneLeaf(require('moment-timezone').tz.guess()))
    .registerLeaf(new BrowserLocationLeaf())
+   .registerLeaf(new ToggleDisabledOnConnectLeaf(document.getElementById('#user-says')))
    .registerLeaf(new ScrollToBottomOnLetterLeaf(document.getElementById('message-container')))
    .registerLeaf(new EmitStatusMessageEventsLeaf(statusEmitter))
    .registerLeaf(new AutoReconnectLeaf(statusEmitter))
@@ -63,6 +65,7 @@ The above example results in a `CompositeBSClient` that will...
 * Persist the server-provided user id across page refreshers. (`CookieUserIdLeaf`)
 * Include the timezone that the user is in in messages sent to the server, as guessed by `moment-timezone`. (`StaticTimezoneLeaf`)
 * Include the location of the user, using the [geolocation api](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation). (`BrowserLocationLeaf`)
+* Set the disabled state of a `HTMLElement` based on when the `CompositeBSclient` connects and disconnects from the server. (`ToggleDisabledOnConnectLeaf`)
 * Scroll to the bottom of a DOM element when a new StaMP letter is received. (`ScrollToBottomOnLetterLeaf` )
 * Emit status messages about the `CompositeBSClient`'s connection to the BotSocket server as events. (`EmitStatuMessageEventsLeaf`)
 * Attempt to automatically reconnect to the BotSocket server on disconnect, after a delay. (`AutoReconnectLeaf`)
@@ -205,6 +208,7 @@ Here is a brief overview of the leafs included in this package:
 | `EmitStatusMessageEventsLeaf`  | Leaf that emits status messages events based on the usual operations of a `CompositeBSClient`, via an `EventEmitter`.
 | `EmitLetterMessageEventsLeaf`  | Leaf that emits letter messages events based on the usual operations of a `CompositeBSClient`, via an `EventEmitter`.
 | `TalkingLeaf`                  | Leaf that speaks `StaMP` messages (that have audio).
+| `ToggleDisabledOnConnectLeaf`  | Leaf that toggles the disabled state of an `HTMLElement` when a `CompositeBSClient` connects and disconnects.
 
 ## Identifying the user of a client
 
