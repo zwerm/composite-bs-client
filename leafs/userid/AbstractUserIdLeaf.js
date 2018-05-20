@@ -45,7 +45,7 @@ class AbstractUserIdLeaf extends BSClientLeaf {
      * @override
      */
     processServerHandshake(serverHandshake) {
-        this.userId = serverHandshake.userId;
+        this.userId = serverHandshake.userId || serverHandshake.clientId;
     }
 
     /**
