@@ -104,11 +104,10 @@ class SendInputQueryOnFormSubmitLeaf extends BSClientLeaf {
      *
      * Removes the `'submit'` event listener from the `HTMLFormElement`.
      *
-     * @param {CompositeBSClient} compositeBSClient
      * @override
      */
-    deregister(compositeBSClient) {
-        super.register(compositeBSClient);
+    deregister() {
+        super.deregister();
 
         this._formElement.removeEventListener('submit', this._handleFormElementSubmitted);
     }
