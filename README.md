@@ -27,6 +27,7 @@ const StaticTimezoneLeaf = require('@zwerm/botsocket-clients/leafs/timezone/Stat
 const BrowserLocationLeaf = require('@zwerm/botsocket-clients/leafs/location/BrowserLocationLeaf');
 
 const ToggleDisabledOnConnectLeaf = require('@zwerm/botsocket-clients/leafs/ToggleDisabledOnConnectLeaf');
+const SendInputQueryOnFormSubmitLeaf = require('@zwerm/botsocket-clients/leafs/SendInputQueryOnFormSubmitLeaf');
 const ScrollToBottomOnLetterLeaf = require('@zwerm/botsocket-clients/leafs/ScrollToBottomOnLetterLeaf');
 const EmitStatusMessageEventsLeaf = require('@zwerm/botsocket-clients/leafs/EmitStatusMessageEventsLeaf');
 const AutoReconnectLeaf = require('@zwerm/botsocket-clients/leafs/AutoReconnectLeaf');
@@ -46,6 +47,7 @@ bsc.registerLeaf(new TalkingLeaf())
    .registerLeaf(new StaticTimezoneLeaf(require('moment-timezone').tz.guess()))
    .registerLeaf(new BrowserLocationLeaf())
    .registerLeaf(new ToggleDisabledOnConnectLeaf(document.getElementById('#user-says')))
+   .registerLeaf(new SendInputQueryOnFormSubmitLeaf(document.getElementById('#user-says-send'), document.getElementById('#user-says')))
    .registerLeaf(new ScrollToBottomOnLetterLeaf(document.getElementById('message-container')))
    .registerLeaf(new EmitStatusMessageEventsLeaf(statusEmitter))
    .registerLeaf(new AutoReconnectLeaf(statusEmitter))
@@ -66,6 +68,7 @@ The above example results in a `CompositeBSClient` that will...
 * Include the timezone that the user is in in messages sent to the server, as guessed by `moment-timezone`. (`StaticTimezoneLeaf`)
 * Include the location of the user, using the [geolocation api](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation). (`BrowserLocationLeaf`)
 * Set the disabled state of a `HTMLElement` based on when the `CompositeBSclient` connects and disconnects from the server. (`ToggleDisabledOnConnectLeaf`)
+* Send the value of an `HTMLInputElement` as a query when a `HTMLFormElement` is submitted. (`SendInputQueryOnFormSubmitLeaf`)
 * Scroll to the bottom of a DOM element when a new StaMP letter is received. (`ScrollToBottomOnLetterLeaf` )
 * Emit status messages about the `CompositeBSClient`'s connection to the BotSocket server as events. (`EmitStatuMessageEventsLeaf`)
 * Attempt to automatically reconnect to the BotSocket server on disconnect, after a delay. (`AutoReconnectLeaf`)
@@ -191,24 +194,27 @@ The `renderLetterData: BotSocket.Protocol.Messages.RenderLetterData` parameter c
 
 Here is a brief overview of the leafs included in this package:
 
-| Class name                     | Usage
-| ------------------------------ |:---
-| `AbstractLocationLeaf`         | Abstract leaf that handles managing & providing a `location` as and when required during the usual operations of a `CompositeBSClient`.
-| `StaticLocationLeaf`           | Location-managing leaf that that simply uses a static lat & lng that can be changed with getters & setters.
-| `BrowserLocationLeaf`          | Location-managing leaf that gets it's `location` via the geolocation browser API.
-| `AbstractTimezoneLeaf`         | Abstract leaf that handles managing & providing a `timezone` as and when required during the usual operations of a `CompositeBSClient`.
-| `StaticTimezoneLeaf`           | Timezone-managing leaf that that simply uses a static `timezone` that can be changed with getters & setters.
-| `AbstractUserIdLeaf`           | Abstract leaf that handles managing & providing a `user` as and when required during the usual operations of a `CompositeBSClient`.
-| `CookieUserIdLeaf`             | UserId-managing leaf that persists a `userId` via a browser cookie.
-| `StaticUserIdLeaf`             | UserId-managing leaf that that simply uses a static `userId` that can be changed with getters & setters.
-| `AutoReconnectLeaf`            | Leaf that handling automatic reconnects after a delay when the `CompositeBSClient` disconnects from the BotSocket server.
-| `ScrollToBottomOnLetterLeaf`   | Leaf that scrolls to the bottom of an `HTMLElement` when a `render-letter` request arrives.
-| `ScrollToPositionOnLetterLeaf` | Leaf that scrolls to a position of an `HTMLElement` when a `render-letter` request arrives.
-| `ScrollToTopOnLetterLeaf`      | Leaf that scrolls to the top of an `HTMLElement` when a `render-letter` request arrives.
-| `EmitStatusMessageEventsLeaf`  | Leaf that emits status messages events based on the usual operations of a `CompositeBSClient`, via an `EventEmitter`.
-| `EmitLetterMessageEventsLeaf`  | Leaf that emits letter messages events based on the usual operations of a `CompositeBSClient`, via an `EventEmitter`.
-| `TalkingLeaf`                  | Leaf that speaks `StaMP` messages (that have audio).
-| `ToggleDisabledOnConnectLeaf`  | Leaf that toggles the disabled state of an `HTMLElement` when a `CompositeBSClient` connects and disconnects.
+| Class name                       | Usage
+| -------------------------------- |:---
+| `AbstractLocationLeaf`           | Abstract leaf that handles managing & providing a `location` as and when required during the usual operations of a `CompositeBSClient`.
+| `StaticLocationLeaf`             | Location-managing leaf that that simply uses a static lat & lng that can be changed with getters & setters.
+| `BrowserLocationLeaf`            | Location-managing leaf that gets it's `location` via the geolocation browser API.
+| `AbstractTimezoneLeaf`           | Abstract leaf that handles managing & providing a `timezone` as and when required during the usual operations of a `CompositeBSClient`.
+| `StaticTimezoneLeaf`             | Timezone-managing leaf that that simply uses a static `timezone` that can be changed with getters & setters.
+| `AbstractUserIdLeaf`             | Abstract leaf that handles managing & providing a `user` as and when required during the usual operations of a `CompositeBSClient`.
+| `CookieUserIdLeaf`               | UserId-managing leaf that persists a `userId` via a browser cookie.
+| `StaticUserIdLeaf`               | UserId-managing leaf that that simply uses a static `userId` that can be changed with getters & setters.
+| `AutoReconnectLeaf`              | Leaf that handling automatic reconnects after a delay when the `CompositeBSClient` disconnects from the BotSocket server.
+| `ScrollToBottomOnLetterLeaf`     | Leaf that scrolls to the bottom of an `HTMLElement` when a `render-letter` request arrives.
+| `ScrollToPositionOnLetterLeaf`   | Leaf that scrolls to a position of an `HTMLElement` when a `render-letter` request arrives.
+| `ScrollToTopOnLetterLeaf`        | Leaf that scrolls to the top of an `HTMLElement` when a `render-letter` request arrives.
+| `EmitStatusMessageEventsLeaf`    | Leaf that emits status messages events based on the usual operations of a `CompositeBSClient`, via an `EventEmitter`.
+| `EmitLetterMessageEventsLeaf`    | Leaf that emits letter messages events based on the usual operations of a `CompositeBSClient`, via an `EventEmitter`.
+| `TalkingLeaf`                    | Leaf that speaks `StaMP` messages (that have audio).
+| `ToggleDisabledOnConnectLeaf`    | Leaf that toggles the disabled state of an `HTMLElement` when a `CompositeBSClient` connects and disconnects.
+| `SendInputQueryOnFormSubmitLeaf` | Leaf that sends the value of an `HTMLInputElement` when an `HTMLFormElement` is submitted.
+
+Note that not all of the leafs use methods defined in `BSClientLeaf`. Leafs are also useful as way of grouping functionality related to the `CompositeBSClient`.
 
 ## Identifying the user of a client
 
