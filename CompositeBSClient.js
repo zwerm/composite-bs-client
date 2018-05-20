@@ -201,6 +201,21 @@ class CompositeBSClient {
     }
 
     /**
+     * Disconnects from the BotSocket server by closing the socket.
+     *
+     * @param {number} [code=3001] the closing code. default code is 3001, which means don't reconnect automatically
+     *
+     * @return {CompositeBSClient}
+     */
+    disconnect(code = 3001) {
+        this._bsClientBush.preDisconnect(code);
+
+        this._bsClientSocket.close(code);
+
+        return this;
+    }
+
+    /**
      *
      */
     connect() {
