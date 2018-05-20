@@ -117,18 +117,19 @@ class SendInputQueryOnFormSubmitLeaf extends BSClientLeaf {
 
     /**
      * Handles when the `HTMLFormElement` is submitted.
+     * <br\>
+     * Checks if the `CompositeBSClient` is connected,
+     * and calls {@link #_sendElementValueAsQuery `_sendElementValueAsQuery`} if it is.
      *
-     * Gets the current value of the `HTMLInputElement`,
-     * sends it as a query to the BotSocketServer,
-     * and then clears the `HTMLInputElement`'s value.
-     *
-     * @param {Event} event
+     * @param {Event} submitEvent
      *
      * @return {boolean}
      * @protected
+     *
+     * @see #_sendElementValueAsQuery SendInputQueryOnFormSubmitLeaf._sendElementValueAsQuery method
      */
-    _handleFormElementSubmitted(event) {
-        event.preventDefault();
+    _handleFormElementSubmitted(submitEvent) {
+        submitEvent.preventDefault();
 
         if (this.bsClient.isConnected) {
             this._sendElementValueAsQuery();
@@ -138,10 +139,12 @@ class SendInputQueryOnFormSubmitLeaf extends BSClientLeaf {
     }
 
     /**
-     * Sends the value of the {@link SendInputQueryOnFormSubmitLeaf#inputElement inputElement} as a query message
+     * Sends the value of the {@link #inputElement `inputElement`} as a query message
      * to the BotSocket server, via the `CompositeBSClient`.
      *
      * @protected
+     *
+     * @see CompositeBSClient#sendQuery CompositeBSClient.sendQuery method
      */
     _sendElementValueAsQuery() {
         const text = (this.inputElement.value).trim();
