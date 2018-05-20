@@ -232,18 +232,20 @@ class CompositeBSClient {
     _sendClientHandshake() {
         (/** @type {BotSocket.ClientSocket} */this._bsClientSocket).sendMessageToServer(
             'handshake',
-            this._supplementClientHandshake()
+            this._supplementClientHandshake({ userId: this._defaultUserId })
         );
     }
 
     /**
      * Supplements the data that's going to be sent as part of a BotSocket `ClientHandshake`.
      *
+     * @param {BotSocket.Protocol.Messages.ClientHandshakeData} clientHandshake
+     *
      * @return {BotSocket.Protocol.Messages.ClientHandshakeData}
      * @private
      */
-    _supplementClientHandshake() {
-        return this._bsClientBush.supplementClientHandshake({ userId: this._defaultUserId });
+    _supplementClientHandshake(clientHandshake) {
+        return this._bsClientBush.supplementClientHandshake(clientHandshake);
     }
 
     /**
