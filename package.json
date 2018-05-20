@@ -1,18 +1,18 @@
 {
     "name": "@zwerm/botsocket-clients",
-    "version": "1.0.0",
-    "description": "",
+    "version": "0.0.0",
+    "description": "A collection of BotSocket clients.",
+    "homepage": "https://bitbucket.org/preferizi/botsocket-clients#readme",
+    "license": "ISC",
+    "author": "Gareth Jones",
     "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
     "repository": {
         "type": "git",
         "url": "git+ssh://git@bitbucket.org/preferizi/botsocket-clients.git"
     },
-    "author": "",
-    "license": "ISC",
-    "homepage": "https://bitbucket.org/preferizi/botsocket-clients#readme",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
     "dependencies": {
         "callsite": "^1.0.0",
         "moment": "^2.22.1",
