@@ -35,13 +35,14 @@ const bsc = new CompositeBSC('ws-url', 'team-id', 'bot-id', 'channel-id');
 
 const statusEmitter = new EventEmitter();
 
-bsc.registerLeaf(new TalkingLeaf());
-bsc.registerLeaf(new CookieUserIdLeaf());
-bsc.registerLeaf(new StaticTimezoneLeaf(require('moment-timezone').tz.guess()));
-bsc.registerLeaf(new BrowserLocationLeaf());
-bsc.registerLeaf(new ScrollToBottomOnLetterLeaf(document.getElementById('message-container')));
-bsc.registerLeaf(new EmitStatusMessageEventsLeaf(statusEmitter));
-bsc.registerLeaf(new AutoReconnectLeaf(statusEmitter));
+bsc.registerLeaf(new TalkingLeaf())
+   .registerLeaf(new CookieUserIdLeaf())
+   .registerLeaf(new StaticTimezoneLeaf(require('moment-timezone').tz.guess()))
+   .registerLeaf(new BrowserLocationLeaf())
+   .registerLeaf(new ScrollToBottomOnLetterLeaf(document.getElementById('message-container')))
+   .registerLeaf(new EmitStatusMessageEventsLeaf(statusEmitter))
+   .registerLeaf(new AutoReconnectLeaf(statusEmitter))
+   .connect();
 
 statusEmitter.on(EmitStatusMessageEventsLeaf.E_STATUS_CONNECTING, ({ isReconnection }) => console.warn(`${isReconnection ? 're' : ''}connecting...`));
 statusEmitter.on(EmitStatusMessageEventsLeaf.E_STATUS_CONNECT, () => console.log('connected'));
