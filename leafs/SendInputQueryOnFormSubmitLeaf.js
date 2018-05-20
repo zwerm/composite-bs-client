@@ -96,6 +96,8 @@ class SendInputQueryOnFormSubmitLeaf extends BSClientLeaf {
     register(compositeBSClient) {
         super.register(compositeBSClient);
 
+        // just to be safe
+        this.formElement.removeEventListener('submit', this._handleFormElementSubmitted);
         this.formElement.addEventListener('submit', this._handleFormElementSubmitted);
     }
 
