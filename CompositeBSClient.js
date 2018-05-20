@@ -193,6 +193,8 @@ class CompositeBSClient {
     /**
      *
      * @param {number} [code=3001] the closing code. default code is 3001, which means don't reconnect automatically
+     *
+     * @deprecated in favor of the {@link #disconnect disconnect} method.
      */
     closeSocket(code = 3001) {
         this._bsClientBush.preDisconnect(code);
