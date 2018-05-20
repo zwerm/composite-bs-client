@@ -96,7 +96,7 @@ class SendInputQueryOnFormSubmitLeaf extends BSClientLeaf {
     register(compositeBSClient) {
         super.register(compositeBSClient);
 
-        this._formElement.addEventListener('submit', this._handleFormElementSubmitted);
+        this.formElement.addEventListener('submit', this._handleFormElementSubmitted);
     }
 
     /**
@@ -109,7 +109,7 @@ class SendInputQueryOnFormSubmitLeaf extends BSClientLeaf {
     deregister() {
         super.deregister();
 
-        this._formElement.removeEventListener('submit', this._handleFormElementSubmitted);
+        this.formElement.removeEventListener('submit', this._handleFormElementSubmitted);
     }
 
     // endregion
