@@ -125,19 +125,14 @@ class SendInputQueryOnFormSubmitLeaf extends BSClientLeaf {
      * @param {Event} event
      *
      * @return {boolean}
-     * @private
+     * @protected
      */
     _handleFormElementSubmitted(event) {
         event.preventDefault();
 
-        /** @type {string} */
-        const text = (this.inputElement.value).trim();
-
-        if (text) {
-            this.bsClient.sendQuery(text);
-        }
-
-        this.inputElement.value = '';
+        if (this.bsClient.isConnected) {
+            this._sendElementValueAsQuery();
+        } // make sure the client is actually connected
 
         return false;
     }
