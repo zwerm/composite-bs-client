@@ -14,7 +14,8 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
-        "callsite": "^1.0.0"
+        "callsite": "^1.0.0",
+        "moment-timezone": "^0.5.17"
     },
     "devDependencies": {
         "@types/callsite": "^1.0.30",
