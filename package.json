@@ -24,6 +24,6 @@
         "@types/node": "^8.10.9"
     },
     "optionalDependencies": {
-        "stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
+        "@stampit/stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
     }
 }

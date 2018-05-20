@@ -1,5 +1,5 @@
-import { StaMP } from 'stamp';
 import { EventEmitter } from 'events';
+import { StaMP } from '@stampit/stamp';
 
 export declare namespace BotSocket {
     import MessagesRequestDataMap = BotSocket.Protocol.Messages.MessagesRequestDataMap;
