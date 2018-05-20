@@ -216,21 +216,29 @@ class CompositeBSClient {
     }
 
     /**
+     * Connects to the BotSocket server by opening a new socket.
      *
+     * @return {CompositeBSClient}
      */
     connect() {
         this._bsClientBush.preConnect(false);
 
         this._bsClientSocket.connect();
+
+        return this;
     }
 
     /**
+     * Reconnects to the BotSocket server by opening a new socket.
      *
+     * @return {CompositeBSClient}
      */
     reconnect() {
         this._bsClientBush.preConnect(true);
 
         this._bsClientSocket.connect();
+
+        return this;
     }
 
     /**
