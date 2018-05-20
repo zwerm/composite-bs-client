@@ -141,6 +141,22 @@ class SendInputQueryOnFormSubmitLeaf extends BSClientLeaf {
 
         return false;
     }
+
+    /**
+     * Sends the value of the {@link SendInputQueryOnFormSubmitLeaf#inputElement inputElement} as a query message
+     * to the BotSocket server, via the `CompositeBSClient`.
+     *
+     * @protected
+     */
+    _sendElementValueAsQuery() {
+        const text = (this.inputElement.value).trim();
+
+        if (text) {
+            this.bsClient.sendQuery(text);
+        }
+
+        this.inputElement.value = '';
+    }
 }
 
 module.exports = SendInputQueryOnFormSubmitLeaf;
