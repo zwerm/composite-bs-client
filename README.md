@@ -33,25 +33,7 @@ const EmitStatusMessageEventsLeaf = require('@zwerm/botsocket-clients/leafs/Emit
 const AutoReconnectLeaf = require('@zwerm/botsocket-clients/leafs/AutoReconnectLeaf');
 // endregion
 
-const bsc = CompositeBSClient.newForZwermChat(
-    'wss://chat.zwerm.io',
-    'team-id',
-    'bot-id',
-    'channel-id'
-);
-
 const statusEmitter = new EventEmitter();
-
-bsc.registerLeaf(new TalkingLeaf())
-   .registerLeaf(new CookieUserIdLeaf())
-   .registerLeaf(new StaticTimezoneLeaf(require('moment-timezone').tz.guess()))
-   .registerLeaf(new BrowserLocationLeaf())
-   .registerLeaf(new ToggleDisabledOnConnectLeaf(document.getElementById('#user-says')))
-   .registerLeaf(new SendInputQueryOnFormSubmitLeaf(document.getElementById('#user-says-send'), document.getElementById('#user-says')))
-   .registerLeaf(new ScrollToBottomOnLetterLeaf(document.getElementById('message-container')))
-   .registerLeaf(new EmitStatusMessageEventsLeaf(statusEmitter))
-   .registerLeaf(new AutoReconnectLeaf(statusEmitter))
-   .connect();
 
 statusEmitter.on(EmitStatusMessageEventsLeaf.E_STATUS_CONNECTING, ({ isReconnection }) => console.warn(`${isReconnection ? 're' : ''}connecting...`));
 statusEmitter.on(EmitStatusMessageEventsLeaf.E_STATUS_CONNECT, () => console.log('connected'));
@@ -59,6 +41,24 @@ statusEmitter.on(EmitStatusMessageEventsLeaf.E_STATUS_DISCONNECT, () => console.
 statusEmitter.on(EmitStatusMessageEventsLeaf.E_STATUS_ERROR, () => console.error('unable to reconnect'));
 
 statusEmitter.on(AutoReconnectLeaf.E_STATUS_RECONNECT_COUNTDOWN, ({ secondsUntilReconnect }) => console.log(`connection lost, retrying in ${secondsUntilReconnect}...`));
+
+CompositeBSClient
+    .newForZwermChat(
+        'wss://chat.zwerm.io',
+        'team-id',
+        'bot-id',
+        'channel-id'
+    )
+    .registerLeaf(new TalkingLeaf())
+    .registerLeaf(new CookieUserIdLeaf())
+    .registerLeaf(new StaticTimezoneLeaf(require('moment-timezone').tz.guess()))
+    .registerLeaf(new BrowserLocationLeaf())
+    .registerLeaf(new ToggleDisabledOnConnectLeaf(document.getElementById('#user-says')))
+    .registerLeaf(new SendInputQueryOnFormSubmitLeaf(document.getElementById('#user-says-send'), document.getElementById('#user-says')))
+    .registerLeaf(new ScrollToBottomOnLetterLeaf(document.getElementById('message-container')))
+    .registerLeaf(new EmitStatusMessageEventsLeaf(statusEmitter))
+    .registerLeaf(new AutoReconnectLeaf(statusEmitter))
+    .connect();
 ```
 
 The above example results in a `CompositeBSClient` that will...
