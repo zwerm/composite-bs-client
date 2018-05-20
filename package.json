@@ -16,12 +16,14 @@
     "dependencies": {
         "callsite": "^1.0.0",
         "moment": "^2.22.1",
-        "moment-timezone": "^0.5.16",
-        "stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
+        "moment-timezone": "^0.5.16"
     },
     "devDependencies": {
         "@types/callsite": "^1.0.30",
         "@types/moment-timezone": "^0.5.4",
         "@types/node": "^8.10.9"
+    },
+    "optionalDependencies": {
+        "stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
     }
 }
