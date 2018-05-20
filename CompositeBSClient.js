@@ -78,7 +78,7 @@ class CompositeBSClient {
      * @private
      */
     _handleSocketConnected() {
-        this._sendClientHandshake({ userId: this._defaultUserId });
+        this.sendClientHandshake();
         this._bsClientBush.postConnect();
     }
 
@@ -222,6 +222,13 @@ class CompositeBSClient {
             'submit-query',
             queryMessage
         );
+    }
+
+    /**
+     * Sends a handshake message to the BotSocket server.
+     */
+    sendClientHandshake() {
+        this._sendClientHandshake(this._supplementClientHandshake({ userId: this._defaultUserId }));
     }
 
     /**
