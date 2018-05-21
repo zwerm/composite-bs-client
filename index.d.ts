@@ -27,12 +27,14 @@ export declare namespace BotSocket {
             interface MessagesRequestDataMap {
                 'handshake': ClientHandshakeData,
                 'submit-query': SubmitQueryData,
+                'submit-event': SubmitEventData,
                 'render-letter': RenderLetterData
             }
 
             export type RequestType =
                 | 'handshake'
                 | 'submit-query'
+                | 'submit-event'
                 | 'render-letter'
                 ;
 
@@ -91,6 +93,17 @@ export declare namespace BotSocket {
             }
 
             interface SubmitQueryData extends StaMP.Protocol.Messages.StandardisedQueryMessage {
+
+            }
+
+            // endregion
+            // region SubmitEvent
+            interface SubmitEvent extends RequestMessage {
+                request: 'submit-event';
+                data: SubmitEventData;
+            }
+
+            interface SubmitEventData extends StaMP.Protocol.Messages.StandardisedEventMessage {
 
             }
 
