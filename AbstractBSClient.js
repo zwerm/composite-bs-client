@@ -244,6 +244,30 @@ class AbstractBSClient {
     }
 
     /**
+     * Sends an event message to the BotSocket server.
+     *
+     * Unless provided in the `data` parameter, `AbstractBSClient#clientId`
+     * will be used for the required `data.senderId` property, via the spread operator.
+     *
+     * @param {string} event
+     * @param {Object} [payload={}]
+     * @param {StaMP.Protocol.Messages.StandardisedEventMessageData|Object} [data={}]
+     */
+    sendEvent(event, payload = {}, data = {}) {
+        (/** @type {BotSocket.ClientSocket} */this._bsClientSocket).sendMessageToServer('submit-event', {
+            $StaMP: true,
+            type: 'event',
+            from: 'user',
+            event,
+            payload,
+            data: Object.assign({
+                senderId: this.clientId
+            }, data),
+            timezone: this.timezone
+        });
+    }
+
+    /**
      * Processes the result of handshaking with the BotSocket server.
      *
      * @param {BotSocket.Protocol.Messages.ServerHandshakeData} serverHandshake
