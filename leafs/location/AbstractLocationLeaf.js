@@ -80,6 +80,33 @@ class AbstractLocationLeaf extends BSClientLeaf {
             }
         );
     }
+
+    /**
+     * @inheritDoc
+     *
+     * @param {StaMP.Protocol.EventMessage} event
+     *
+     * @return {StaMP.Protocol.EventMessage}
+     * @override
+     */
+    supplementStaMPEvent(event) {
+        const lastResult = arguments[arguments.length - 1];
+        const latLng = { location: this._buildLatLngObject() };
+
+        return Object.assign(
+            {},
+            event,
+            lastResult,
+            {
+                data: Object.assign(
+                    {},
+                    event.data,
+                    lastResult ? lastResult.data : null,
+                    latLng.location ? latLng : null
+                )
+            }
+        );
+    }
 }
 
 module.exports = AbstractLocationLeaf;
