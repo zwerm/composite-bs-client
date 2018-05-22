@@ -117,6 +117,24 @@ class BSClientLeaf {
     }
 
     /**
+     * Supplements a StaMP event message that's going to be sent to the BotSocket server.
+     *
+     * The value returned by the method of this method on a `Leaf` called prior to this
+     * one on the bush is passed as the last parameter, and can be accessed like so:
+     *
+     * ```
+     * const lastResult = arguments[arguments.length - 1];
+     * ```
+     *
+     * @param {StaMP.Protocol.EventMessage} event
+     *
+     * @return {StaMP.Protocol.EventMessage}
+     */
+    supplementStaMPEvent(event) {
+        return event;
+    }
+
+    /**
      * Processes the data provided by the BotSocket server as part of it's handshaking.
      *
      * @param {BotSocket.Protocol.Messages.ServerHandshakeData} serverHandshake
