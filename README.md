@@ -314,6 +314,14 @@ This can be done by calling the `CompositeBSClient#sendQuery` method.
 
 Leafs can supplement a query being sent (such as to add timezone or location data) with the `supplementStaMPQuery` method.
 
+### Sending client events
+
+To submit an event from the client to the BotSocket server, you send a request of type `submit-event`, with the `data` property being a `StaMP` event message.
+
+This can be done by calling the `CompositeBSClient#sendEvent` method.
+
+Leafs can supplement a event being sent (such as to add timezone or location data) with the `supplementStaMPEvent` method.
+
 ### Rendering letters
 
 When the server wants a client to deliver something to the user (such as some text or that the server or bot is 'thinking'), it'll send a `render-letter` request.
