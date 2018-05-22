@@ -178,6 +178,23 @@ const lastResult = arguments[arguments.length - 1];
 Keep in mind that `StaMP` query messages have a `data` field of type object, and that `Object.assign` *doesn't* merge child object properties.
 If you implement this method, you must make sure to merge the `data` the field as well. See `AbstractUserIdLeaf` for an example of this.
 
+#### `supplementStaMPEvent(event: StaMP.Protocol.EventMessage): StaMP.Protocol.EventMessage`
+
+This method is for supplementing a StaMP event message that's going to be sent to the BotSocket server.
+
+The `event: StaMP.Protocol.EventMessage` parameter contains the *original* `StaMP` event message that will be sent to the server.
+
+Leafs can get the value returned by the last leaf in the branch via the `arguments` variable, like so:
+
+```
+const lastResult = arguments[arguments.length - 1];
+```
+
+Keep in mind that `StaMP` event messages have a `data` field of type object, and that `Object.assign` *doesn't* merge child object properties.
+If you implement this method, you must make sure to merge the `data` the field as well. See `AbstractUserIdLeaf` for an example of this.
+
+This also applies to any modifications being made to the `payload` field of event messages, which is also of type object.
+
 #### `processServerHandshake(serverHandshake: BotSocket.Protocol.Messages.ServerHandshakeData): void`
 
 This method is for processing the data returned by the BotSocket server as part of it's handshaking.
