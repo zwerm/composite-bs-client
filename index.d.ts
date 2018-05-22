@@ -72,6 +72,9 @@ export declare namespace BotSocket {
                 data: ServerHandshakeData;
             }
 
+            /**
+             * Data provided by the server in it's handshake requests.
+             */
             interface ServerHandshakeData {
                 /**
                  * @deprecated in favor of userId
@@ -81,8 +84,22 @@ export declare namespace BotSocket {
                  * @deprecated in favor of userId
                  */
                 clientId: string;
+                /**
+                 * The id of the user that the server *says* the client
+                 * represents when sending messages to the server.
+                 */
                 userId: string;
+                /**
+                 * How long (in seconds) the server thinks that the
+                 * client should wait before trying to reconnect,
+                 * whenever the server disconnects the client.
+                 */
                 retryWaitTime: number;
+                /**
+                 * The id of the connection that handles this clients
+                 * interactions with the server.
+                 */
+                connectionId: string;
             }
 
             // endregion
@@ -95,6 +112,7 @@ export declare namespace BotSocket {
             interface SubmitQueryData extends StaMP.Protocol.Messages.StandardisedQueryMessage {
 
             }
+
             // endregion
             // region SubmitEvent
             interface SubmitEvent extends RequestMessage {
