@@ -285,6 +285,47 @@ class CompositeBSClient {
     }
 
     /**
+     * Sends an event message to the BotSocket server.
+     *
+     * The event message will be supplemented by any registered leafs that implement the
+     * {@link BSClientLeaf#supplementStaMPEvent BSClientLeaf.supplementStaMPEvent} method.
+     *
+     * The event's `data.senderId` property will be the default user id that was
+     * provided by the BotSocket server as part of it's handshaking, unless overridden
+     * by a registered `leaf`.
+     *
+     * @param {string} event
+     * @param {Object} [payload={}]
+     * @param {StaMP.Protocol.Messages.StandardisedEventMessageData|Object} [data={}]
+     *
+     * @see {@link BSClientLeaf#supplementStaMPEvent BSClientLeaf.supplementStaMPEvent}
+     */
+    sendEvent(event, payload = {}, data = {}) {
+        this._sendEvent(this._supplementStaMPEvent({
+            $StaMP: true,
+            type: 'event',
+            from: 'user',
+            event,
+            payload,
+            data: { senderId: this._defaultUserId },
+            timezone: null
+        }));
+    }
+
+    /**
+     * Actually sends an event message to the BotSocket server.
+     *
+     * @param {StaMP.Protocol.EventMessage} eventMessage
+     * @private
+     */
+    _sendEvent(eventMessage) {
+        (/** @type {BotSocket.ClientSocket} */this._bsClientSocket).sendMessageToServer(
+            'submit-event',
+            eventMessage
+        );
+    }
+
+    /**
      * Sends a handshake message to the BotSocket server.
      */
     sendClientHandshake() {
@@ -327,6 +368,18 @@ class CompositeBSClient {
      */
     _supplementStaMPQuery(query) {
         return this._bsClientBush.supplementStaMPQuery(query);
+    }
+
+    /**
+     * Supplements a StaMP event message that's going to be sent to the BotSocket server.
+     *
+     * @param {StaMP.Protocol.EventMessage} event
+     *
+     * @return {StaMP.Protocol.EventMessage}
+     * @private
+     */
+    _supplementStaMPEvent(event) {
+        return this._bsClientBush.supplementStaMPEvent(event);
     }
 
     /**
