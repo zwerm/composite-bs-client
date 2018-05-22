@@ -46,6 +46,25 @@ class AbstractTimezoneLeaf extends BSClientLeaf {
             { timezone: this.timezone }
         );
     }
+
+    /**
+     * @inheritDoc
+     *
+     * @param {StaMP.Protocol.EventMessage} event
+     *
+     * @return {StaMP.Protocol.EventMessage}
+     * @override
+     */
+    supplementStaMPEvent(event) {
+        const lastResult = arguments[arguments.length - 1];
+
+        return Object.assign(
+            {},
+            event,
+            lastResult,
+            { timezone: this.timezone }
+        );
+    }
 }
 
 module.exports = AbstractTimezoneLeaf;
