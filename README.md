@@ -169,6 +169,8 @@ This method is for supplementing a StaMP query message that's going to be sent t
 
 The `query: StaMP.Protocol.QueryMessage` parameter contains the *original* `StaMP` query message that will be sent to the server.
 
+This method returns a new modified query message object, based on the original & previous query message objects.
+
 Leafs can get the value returned by the last leaf in the branch via the `arguments` variable, like so:
 
 ```
@@ -183,6 +185,8 @@ If you implement this method, you must make sure to merge the `data` the field a
 This method is for supplementing a StaMP event message that's going to be sent to the BotSocket server.
 
 The `event: StaMP.Protocol.EventMessage` parameter contains the *original* `StaMP` event message that will be sent to the server.
+
+This method returns a new modified event message object, based on the original & previous event message objects.
 
 Leafs can get the value returned by the last leaf in the branch via the `arguments` variable, like so:
 
