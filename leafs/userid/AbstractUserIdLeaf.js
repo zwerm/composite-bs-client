@@ -92,6 +92,32 @@ class AbstractUserIdLeaf extends BSClientLeaf {
             }
         );
     }
+
+    /**
+     * @inheritDoc
+     *
+     * @param {StaMP.Protocol.EventMessage} event
+     *
+     * @return {StaMP.Protocol.EventMessage}
+     * @override
+     */
+    supplementStaMPEvent(event) {
+        const lastResult = arguments[arguments.length - 1];
+
+        return Object.assign(
+            {},
+            event,
+            lastResult,
+            {
+                data: Object.assign(
+                    {},
+                    event.data,
+                    lastResult ? lastResult.data : null,
+                    { senderId: this.userId }
+                )
+            }
+        );
+    }
 }
 
 module.exports = AbstractUserIdLeaf;
