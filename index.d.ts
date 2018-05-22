@@ -52,6 +52,9 @@ export declare namespace BotSocket {
                 data: ClientHandshakeData;
             }
 
+            /**
+             * Data provided by the client in it's handshake requests.
+             */
             interface ClientHandshakeData {
                 /**
                  * @deprecated in favor of userId
@@ -61,7 +64,14 @@ export declare namespace BotSocket {
                  * @deprecated in favor of userId
                  */
                 clientId: string;
+                /**
+                 * The id of the user that the client *wants* to
+                 * represent when sending messages to the server.
+                 */
                 userId: string;
+                /**
+                 * The timezone that the client is operating in.
+                 */
                 timezone?: string;
             }
 
@@ -72,6 +82,9 @@ export declare namespace BotSocket {
                 data: ServerHandshakeData;
             }
 
+            /**
+             * Data provided by the server in it's handshake requests.
+             */
             interface ServerHandshakeData {
                 /**
                  * @deprecated in favor of userId
@@ -81,8 +94,22 @@ export declare namespace BotSocket {
                  * @deprecated in favor of userId
                  */
                 clientId: string;
+                /**
+                 * The id of the user that the server *says* the client
+                 * represents when sending messages to the server.
+                 */
                 userId: string;
+                /**
+                 * How long (in seconds) the server thinks that the
+                 * client should wait before trying to reconnect,
+                 * whenever the server disconnects the client.
+                 */
                 retryWaitTime: number;
+                /**
+                 * The id of the connection that handles this clients
+                 * interactions with the server.
+                 */
+                connectionId: string;
             }
 
             // endregion
