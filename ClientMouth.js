@@ -1,11 +1,15 @@
 class ClientMouth {
     /**
+     * Creates a new `ClientMouth` with the given `AudioContext`.
      *
-     * @param {AudioContext} [audioContext=new AudioContext()]
+     * If the `AudioContext` is null, then the `ClientMouth` will assume it's not supported,
+     * and so ignore any requests made to it, rather than try and use the `AudioContext`.
+     *
+     * @param {?AudioContext} [audioContext=window.AudioContext ? new AudioContext() : null]
      */
-    constructor(audioContext = new AudioContext()) {
+    constructor(audioContext = window.AudioContext ? new AudioContext() : null) {
         /**
-         * @type {AudioContext}
+         * @type {?AudioContext}
          * @private
          */
         this._audioContext = audioContext;
@@ -43,12 +47,16 @@ class ClientMouth {
     /**
      * @param {{speech: Polly.SynthesizeSpeechOutput}} message
      *
-     * @return {Promise<void>} A promise that resolves when the source finishes playing or is stopped.
-     *                          It's possible that a source is discarded before it's played, meaning this promise never resolves.
-     *                          Because of this, it's best not to chain critical code on this promise.
-     *                          Instead this promise is best used for minor cosmetic flair.
+     * @return {Promise} A promise that resolves when the source finishes playing or is stopped.
+     *                    It's possible that a source is discarded before it's played, meaning this promise never resolves.
+     *                    Because of this, it's best not to chain critical code on this promise.
+     *                    Instead this promise is best used for minor cosmetic flair.
      */
     speakMessage(message) {
+        if (!this._audioContext) {
+            return Promise.resolve();
+        }
+
         const source = this._audioContext.createBufferSource();
         this._audioQueue.push(source);
 
