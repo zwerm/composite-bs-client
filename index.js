@@ -6,7 +6,6 @@ export const CompositeBSClient = require('./CompositeBSClient');
 
 // region leafs
 export const TalkingLeaf = require('./leafs/TalkingLeaf');
-export const NotifyingLeaf = require('./leafs/NotifyingLeaf');
 export const CookieUserIdLeaf = require('./leafs/userid/CookieUserIdLeaf');
 export const StaticUserIdLeaf = require('./leafs/userid/StaticUserIdLeaf');
 export const StaticTimezoneLeaf = require('./leafs/timezone/StaticTimezoneLeaf');
