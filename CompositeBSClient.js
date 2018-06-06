@@ -392,6 +392,7 @@ class CompositeBSClient {
         this._defaultUserId = serverHandshake.userId;
 
         this._bsClientBush.processServerHandshake(serverHandshake);
+        this._bsClientBush.postHandshake();
     }
 
     /**
