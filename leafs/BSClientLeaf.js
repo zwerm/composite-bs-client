@@ -50,6 +50,9 @@ class BSClientLeaf {
 
     /**
      * Called by the `CompositeBSClient` after it has successfully connected to the BotSocket server.
+     *
+     * This method is called *before* handshaking is done with the BotSocket server,
+     * meaning it is unsafe to send messages (event, query or otherwise) to the server in this method.
      */
     postConnect() {
         // nothing to do
@@ -77,6 +80,16 @@ class BSClientLeaf {
      * Called by the `CompositeBSClient` when the socket connection errors out.
      */
     errored() {
+        // nothing to do
+    }
+
+    /**
+     * Called by the `CompositeBSClient` after it has shaken hands with the BotSocket server.
+     *
+     * This method is called *after* the calls to {@link processServerHandshake} have been made,
+     * making it safe to send messages (event, query or otherwise) to the server in this method.
+     */
+    postHandshake() {
         // nothing to do
     }
 
