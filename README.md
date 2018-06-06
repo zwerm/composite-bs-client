@@ -121,6 +121,8 @@ This method doesn't return anything.
 
 This method is called by the `CompositeBSClient` after it has successfully connected to the BotSocket server.
 
+This method is called *before* handing is done with the BotSocket server, making it unsafe to send messages (event, query or otherwise) in this method.
+
 This method takes no parameters.
 
 This method doesn't return anything.
@@ -144,6 +146,16 @@ This method doesn't return anything.
 #### `errored(): void`
 
 This method is called by the `CompositeBSClient` when the socket connection errors out.
+
+This method takes no parameters.
+
+This method doesn't return anything.
+
+#### `postHandshake(): void`
+
+This method is called by the `CompositeBSClient` after it has shaken hands with the BotSocket server.
+
+This method is called *after* handshaking is done with the BotSocket server, making it safe to send messages (event, query or otherwise) to the server in this method.
 
 This method takes no parameters.
 
