@@ -1,14 +1,17 @@
 {
     "name": "@zwerm/composite-bs-client",
     "version": "0.0.0",
-    "description": "A collection of BotSocket clients.",
-    "homepage": "https://bitbucket.org/preferizi/botsocket-clients#readme",
+    "description": "A Composite BotSocket Client implementation designed for easy expandability, and packed with leafs that are ready to be composited.",
+    "homepage": "https://github.com/Zwerm/composite-bs-client#readme",
+    "bugs": {
+        "url": "https://github.com/Zwerm/composite-bs-client/issues"
+    },
     "license": "ISC",
     "author": "Gareth Jones",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@bitbucket.org/preferizi/botsocket-clients.git"
+        "url": "git+https://github.com/Zwerm/composite-bs-client.git"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
