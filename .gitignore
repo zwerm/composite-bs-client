@@ -18,9 +18,7 @@
 .idea/**/uiDesigner.xml
 .idea/deployment.xml
 .idea/misc.xml
-.idea/modules.xml
 .idea/vcs.xml
-.idea/jsLibraryMappings.xml
 .idea/webServers.xml
 
 # Code style
