@@ -17,20 +17,20 @@ Here's an example of setting up a `CompositeBSClient` instance with some leafs:
 ```javascript
 const { EventEmitter } = require('events');
 
-const CompositeBSClient = require('@zwerm/botsocket-clients/CompositeBSClient');
+const CompositeBSClient = require('@zwerm/composite-bs-client/CompositeBSClient');
 
 // region leafs
-const TalkingLeaf = require('@zwerm/botsocket-clients/leafs/TalkingLeaf');
-const CookieUserIdLeaf = require('@zwerm/botsocket-clients/leafs/userid/CookieUserIdLeaf');
-const StaticTimezoneLeaf = require('@zwerm/botsocket-clients/leafs/timezone/StaticTimezoneLeaf');
-const BrowserLocationLeaf = require('@zwerm/botsocket-clients/leafs/location/BrowserLocationLeaf');
+const TalkingLeaf = require('@zwerm/composite-bs-client/leafs/TalkingLeaf');
+const CookieUserIdLeaf = require('@zwerm/composite-bs-client/leafs/userid/CookieUserIdLeaf');
+const StaticTimezoneLeaf = require('@zwerm/composite-bs-client/leafs/timezone/StaticTimezoneLeaf');
+const BrowserLocationLeaf = require('@zwerm/composite-bs-client/leafs/location/BrowserLocationLeaf');
 
-const ToggleDisabledOnConnectLeaf = require('@zwerm/botsocket-clients/leafs/ToggleDisabledOnConnectLeaf');
-const SendInputQueryOnFormSubmitLeaf = require('@zwerm/botsocket-clients/leafs/SendInputQueryOnFormSubmitLeaf');
-const ScrollToBottomOnLetterLeaf = require('@zwerm/botsocket-clients/leafs/ScrollToBottomOnLetterLeaf');
-const EmitStatusMessageEventsLeaf = require('@zwerm/botsocket-clients/leafs/EmitStatusMessageEventsLeaf');
-const AutoReconnectLeaf = require('@zwerm/botsocket-clients/leafs/AutoReconnectLeaf');
-const SendEventOnHandshakeLeaf = require('@zwerm/botsocket-clients/leafs/SendEventOnHandshakeLeaf');
+const ToggleDisabledOnConnectLeaf = require('@zwerm/composite-bs-client/leafs/ToggleDisabledOnConnectLeaf');
+const SendInputQueryOnFormSubmitLeaf = require('@zwerm/composite-bs-client/leafs/SendInputQueryOnFormSubmitLeaf');
+const ScrollToBottomOnLetterLeaf = require('@zwerm/composite-bs-client/leafs/ScrollToBottomOnLetterLeaf');
+const EmitStatusMessageEventsLeaf = require('@zwerm/composite-bs-client/leafs/EmitStatusMessageEventsLeaf');
+const AutoReconnectLeaf = require('@zwerm/composite-bs-client/leafs/AutoReconnectLeaf');
+const SendEventOnHandshakeLeaf = require('@zwerm/composite-bs-client/leafs/SendEventOnHandshakeLeaf');
 // endregion
 
 const statusEmitter = new EventEmitter();
