@@ -23,7 +23,7 @@ class BSClientSocket extends EventEmitter {
         this._bsUrl = bsUrl;
         /**
          *
-         * @type {WebSocket}
+         * @type {?WebSocket}
          * @private
          */
         this._socket = null;
@@ -77,7 +77,7 @@ class BSClientSocket extends EventEmitter {
      * @return {boolean}
      */
     get isConnected() {
-        return this._socket.readyState === this._socket.OPEN;
+        return this._socket && this._socket.readyState === this._socket.OPEN;
     }
 
     // endregion
@@ -173,8 +173,10 @@ class BSClientSocket extends EventEmitter {
     /**
      * Attempts to reconnect to the BotSocket server by instancing a new socket.
      *
-     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
-     * @param {boolean} [sendHandshake=true] if `true`, handshake message will be sent automatically
+     * @param {string} clientId deprecated: the id of the client, to allow identification and tracking server-side.
+     * @param {boolean} [sendHandshake=true] deprecated: if `true`, handshake message will be sent automatically
+     *
+     * @see {@link BSClientSocket#connect BSClientSocket.connect}
      */
     reconnect(clientId, sendHandshake = true) {
         this.connect(clientId);
@@ -183,8 +185,8 @@ class BSClientSocket extends EventEmitter {
     /**
      * Attempts to connect to the BotSocket server by instancing a new socket.
      *
-     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
-     * @param {boolean} [sendHandshake=true] if `true`, handshake message will be sent automatically
+     * @param {string} clientId deprecated: the id of the client, to allow identification and tracking server-side.
+     * @param {boolean} [sendHandshake=true] deprecated: if `true`, handshake message will be sent automatically
      */
     connect(clientId, sendHandshake = true) {
         // todo: test about closing the socket if it's already connected/open
@@ -198,15 +200,15 @@ class BSClientSocket extends EventEmitter {
      * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent}
      */
     close(code) {
-        this._socket.close(code);
+        this._socket && this._socket.close(code);
     }
 
     /**
      * Instantiates a new WebSocket to connect to a BotSocket server,
-     * setting up the relevant event handlers, and sending handshakes.
+     * setting up the relevant event handlers, but not sending handshake.
      *
-     * @param {string} clientId the id of the client, to allow identification and tracking server-side.
-     * @param {boolean} [sendHandshake=true] if `true`, handshake message will be sent automatically
+     * @param {string} clientId deprecated: the id of the client, to allow identification and tracking server-side.
+     * @param {boolean} [sendHandshake=true] deprecated: if `true`, handshake message will be sent automatically
      *
      * @return {WebSocket}
      * @private
@@ -233,6 +235,8 @@ class BSClientSocket extends EventEmitter {
         });
 
         this._socket = socket;
+
+        return socket;
     }
 
     // region handle socket events
