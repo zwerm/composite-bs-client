@@ -329,7 +329,7 @@ class CompositeBSClient {
      * Sends a handshake message to the BotSocket server.
      */
     sendClientHandshake() {
-        this._sendClientHandshake({ userId: this._defaultUserId });
+        this._sendClientHandshake(this._supplementClientHandshake({ userId: this._defaultUserId }));
     }
 
     /**
@@ -342,7 +342,7 @@ class CompositeBSClient {
     _sendClientHandshake(clientHandshake) {
         (/** @type {BotSocket.ClientSocket} */this._bsClientSocket).sendMessageToServer(
             'handshake',
-            this._supplementClientHandshake(clientHandshake)
+            clientHandshake
         );
     }
 
