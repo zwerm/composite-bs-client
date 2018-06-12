@@ -87,14 +87,6 @@ export declare namespace BotSocket {
              */
             interface ServerHandshakeData {
                 /**
-                 * @deprecated in favor of userId
-                 */
-                sessionId: string;
-                /**
-                 * @deprecated in favor of userId
-                 */
-                clientId: string;
-                /**
                  * The id of the user that the server *says* the client
                  * represents when sending messages to the server.
                  */
