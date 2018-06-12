@@ -6,9 +6,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## 0.1.1 - 2018-06-12
+
+### Added
+ - `private` & `engines` field to `package.json`, with a node engine requirement of +8
+
+### Changed
+ - Fixed package names in requires in code example in `README.md`
+
 ## 0.1.0 - 2018-06-12
 
 ### Added
  - Initial commit
 
-[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.1.1...HEAD
+
+[0.1.1]: https://github.com/zwerm/composite-bs-client/compare/v0.1.0...v0.1.1
