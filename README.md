@@ -1,6 +1,7 @@
 # Composite BotSocket Client & Friends
 
-A fully-functional BotSocket client implementation that's ready to go out of the box., and that can be composited of leafs to extend functionality.
+A Composite BotSocket Client implementation designed for easy expandability that's ready-to-go out of the box, 
+and that comes packed with leafs that are ready to be composited.
 
 The `CompositeBSClient` is based off the [Composite design pattern](https://en.wikipedia.org/wiki/Composite_pattern).
 
