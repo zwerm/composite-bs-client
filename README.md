@@ -1,10 +1,8 @@
-# BotSocket Clients
+# Composite BotSocket Client & Friends
 
-A collection of BotSocket web clients & leafs.
+A fully-functional BotSocket client implementation that's ready to go out of the box., and that can be composited of leafs to extend functionality.
 
-The `CompositeBSClient` is the client class itself, which provides a fully-functional BotSocket client implementation that's ready to go out of the box.
-
-Extending the functionality of the `CompositeBSClient` is done using "leafs", which are based off the [Composite design pattern](https://en.wikipedia.org/wiki/Composite_pattern).
+The `CompositeBSClient` is based off the [Composite design pattern](https://en.wikipedia.org/wiki/Composite_pattern).
 
 Essentially, `BSClientLeaf` defines a series of functions that the `CompositeBSClient` calls on all registered leafs as part of it's regular operations.
 By creating leafs that implement these methods, the functionality of the `CompositeBSClient` can be extended at ease, without the overhead that would come with using inheritance.
