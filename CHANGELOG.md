@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## 0.1.1 - 2018-06-12
+## [0.1.1] - 2018-06-12
 
 ### Added
  - `private` & `engines` field to `package.json`, with a node engine requirement of +8
