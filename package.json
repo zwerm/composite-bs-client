@@ -1,5 +1,5 @@
 {
-    "name": "@zwerm/botsocket-clients",
+    "name": "@zwerm/composite-bs-client",
     "version": "0.0.0",
     "description": "A collection of BotSocket clients.",
     "homepage": "https://bitbucket.org/preferizi/botsocket-clients#readme",
