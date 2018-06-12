@@ -1,3 +1,5 @@
+const PrefixedAudioContext = window.AudioContext || window.webkitAudioContext || null;
+
 class ClientMouth {
     /**
      * Creates a new `ClientMouth` with the given `AudioContext`.
@@ -7,7 +9,7 @@ class ClientMouth {
      *
      * @param {?AudioContext} [audioContext=window.AudioContext ? new AudioContext() : null]
      */
-    constructor(audioContext = window.AudioContext ? new AudioContext() : null) {
+    constructor(audioContext = PrefixedAudioContext ? new PrefixedAudioContext() : null) {
         /**
          * @type {?AudioContext}
          * @private
