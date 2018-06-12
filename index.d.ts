@@ -125,12 +125,12 @@ export declare namespace BotSocket {
 
             // endregion
             // region SubmitEvent
-            interface SubmitEvent<PayloadData extends object, DataData extends StaMP.Protocol.Messages.StandardisedEventMessageData> extends RequestMessage {
+            interface SubmitEvent<PayloadData extends object, DataData extends object | StaMP.Protocol.Messages.StandardisedEventMessageData> extends RequestMessage {
                 request: 'submit-event';
                 data: SubmitEventData<PayloadData, DataData>;
             }
 
-            interface SubmitEventData<PayloadData extends object, DataData extends StaMP.Protocol.Messages.StandardisedEventMessageData> extends StaMP.Protocol.Messages.StandardisedEventMessage<PayloadData, DataData> {
+            interface SubmitEventData<PayloadData extends object, DataData extends object | StaMP.Protocol.Messages.StandardisedEventMessageData> extends StaMP.Protocol.Messages.StandardisedEventMessage<PayloadData, DataData> {
 
             }
 
