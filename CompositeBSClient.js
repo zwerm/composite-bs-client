@@ -225,7 +225,7 @@ class CompositeBSClient {
     connect() {
         this._bsClientBush.preConnect(false);
 
-        this._bsClientSocket.connect();
+        this._bsClientSocket.connect('ignore', false);
 
         return this;
     }
@@ -238,7 +238,7 @@ class CompositeBSClient {
     reconnect() {
         this._bsClientBush.preConnect(true);
 
-        this._bsClientSocket.connect();
+        this._bsClientSocket.connect('ignore', false);
 
         return this;
     }
