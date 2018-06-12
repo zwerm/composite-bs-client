@@ -31,6 +31,7 @@ const SendInputQueryOnFormSubmitLeaf = require('@zwerm/botsocket-clients/leafs/S
 const ScrollToBottomOnLetterLeaf = require('@zwerm/botsocket-clients/leafs/ScrollToBottomOnLetterLeaf');
 const EmitStatusMessageEventsLeaf = require('@zwerm/botsocket-clients/leafs/EmitStatusMessageEventsLeaf');
 const AutoReconnectLeaf = require('@zwerm/botsocket-clients/leafs/AutoReconnectLeaf');
+const SendEventOnHandshakeLeaf = require('@zwerm/botsocket-clients/leafs/SendEventOnHandshakeLeaf');
 // endregion
 
 const statusEmitter = new EventEmitter();
@@ -58,6 +59,7 @@ CompositeBSClient
     .registerLeaf(new ScrollToBottomOnLetterLeaf(document.getElementById('message-container')))
     .registerLeaf(new EmitStatusMessageEventsLeaf(statusEmitter))
     .registerLeaf(new AutoReconnectLeaf(statusEmitter))
+    .registerLeaf(new SendEventOnHandshakeLeaf('WELCOME'))
     .connect();
 ```
 
@@ -72,6 +74,7 @@ The above example results in a `CompositeBSClient` that will...
 * Scroll to the bottom of a DOM element when a new StaMP letter is received. (`ScrollToBottomOnLetterLeaf` )
 * Emit status messages about the `CompositeBSClient`'s connection to the BotSocket server as events. (`EmitStatuMessageEventsLeaf`)
 * Attempt to automatically reconnect to the BotSocket server on disconnect, after a delay. (`AutoReconnectLeaf`)
+* Sends an event message of 'WELCOME' once the `CompositeBSClient` has shaken hands with the server.  (`SendEventOnHandshakeLeaf`)
 
 
 ## Leafs on the wind
@@ -246,6 +249,7 @@ Here is a brief overview of the leafs included in this package:
 | `TalkingLeaf`                    | Leaf that speaks `StaMP` messages (that have audio).
 | `ToggleDisabledOnConnectLeaf`    | Leaf that toggles the disabled state of an `HTMLElement` when a `CompositeBSClient` connects and disconnects.
 | `SendInputQueryOnFormSubmitLeaf` | Leaf that sends the value of an `HTMLInputElement` when an `HTMLFormElement` is submitted.
+| `SendEventOnHandshakeLeaf`       | Leaf that sends an event message to the server once handshaking is complete, triggering a bot response (if supported).
 
 Note that not all of the leafs use methods defined in `BSClientLeaf`. Leafs are also useful as way of grouping functionality related to the `CompositeBSClient`.
 
