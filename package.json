@@ -1,6 +1,6 @@
 {
     "name": "@zwerm/composite-bs-client",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "private": false,
     "description": "A Composite BotSocket Client implementation designed for easy expandability, and packed with leafs that are ready to be composited.",
     "homepage": "https://github.com/Zwerm/composite-bs-client#readme",
