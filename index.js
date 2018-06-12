@@ -17,4 +17,5 @@ export const ScrollToTopOnLetterLeaf = require('./leafs/ScrollToTopOnLetterLeaf'
 export const EmitStatusMessageEventsLeaf = require('./leafs/EmitStatusMessageEventsLeaf');
 export const EmitLetterMessageEventsLeaf = require('./leafs/EmitLetterMessageEventsLeaf');
 export const AutoReconnectLeaf = require('./leafs/AutoReconnectLeaf');
+export const SendEventOnHandshakeLeaf = require('./leafs/SendEventOnHandshakeLeaf');
 // endregion
