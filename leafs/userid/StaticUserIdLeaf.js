@@ -27,6 +27,7 @@ class StaticUserIdLeaf extends AbstractUserIdLeaf {
      * @inheritDoc
      *
      * @return {?string}
+     * @override
      */
     get userId() {
         return this._userId;
@@ -36,6 +37,7 @@ class StaticUserIdLeaf extends AbstractUserIdLeaf {
      * @inheritDoc
      *
      * @param {?string} userId
+     * @override
      */
     set userId(userId) {
         this._commentOnUserIdType(userId);
