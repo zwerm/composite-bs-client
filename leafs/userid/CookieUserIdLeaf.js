@@ -60,6 +60,8 @@ class CookieUserIdLeaf extends AbstractUserIdLeaf {
      * @param {?string} userId
      */
     set userId(userId) {
+        this._commentOnUserIdType(userId);
+
         this.constructor.setCookie(this._cookieName, userId);
     }
 

@@ -38,6 +38,8 @@ class StaticUserIdLeaf extends AbstractUserIdLeaf {
      * @param {?string} userId
      */
     set userId(userId) {
+        this._commentOnUserIdType(userId);
+
         this._userId = userId;
     }
 
