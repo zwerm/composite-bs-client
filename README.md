@@ -266,7 +266,10 @@ A client can specific it's own `userId` as part of the clients `handshake` reque
 The server will take that `userId` into account when deciding which `userId` to provide the client with.
 
 If the server accepts the `userId` provided by the client, it'll use that `userId`, otherwise it'll generate one for the client to use.
-More on this in the "Handshaking" section of "BotSocket 101". 
+More on this in the "Handshaking" section of "BotSocket 101".
+
+The `userId` should be a `string` - if it's not, the server will typecast it to a `string`, and return the result back to the client.
+This is because `Zwerm` requires `string` ids, and will throw an error if an id is used that's not of type `string`.
 
 By default, the `CompositeBSClient` will just accept whatever `userId` the server generates, with no form of persistence between sessions.
 

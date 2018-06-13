@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+ - `AbstractUserIdLeaf` (& by inheritance child leafs) will now print a warning to the console
+    when a supplement method encounters a `userId` value that's not `null` or of type `string`. ([66c7846])
+ - `StaticUserIdLeaf` & `CookieUserIdLeaf` leafs will now print a warning to the console
+    when their setters are provided a value that's not `null` or of type `string`. ([f76b871])
+
 ## [0.1.1] - 2018-06-12
 
 ### Added
@@ -22,3 +28,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.1.1...HEAD
 
 [0.1.1]: https://github.com/zwerm/composite-bs-client/compare/v0.1.0...v0.1.1
+
+[66c7846]: https://github.com/Zwerm/composite-bs-client/commit/66c7846
+[f76b871]: https://github.com/Zwerm/composite-bs-client/commit/f76b871

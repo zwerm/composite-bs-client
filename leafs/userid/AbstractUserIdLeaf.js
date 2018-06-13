@@ -59,6 +59,8 @@ class AbstractUserIdLeaf extends BSClientLeaf {
     supplementClientHandshake(clientHandshake) {
         const lastResult = arguments[arguments.length - 1];
 
+        this._commentOnUserIdType(this.userId);
+
         return Object.assign(
             {},
             clientHandshake,
@@ -77,6 +79,8 @@ class AbstractUserIdLeaf extends BSClientLeaf {
      */
     supplementStaMPQuery(query) {
         const lastResult = arguments[arguments.length - 1];
+
+        this._commentOnUserIdType(this.userId);
 
         return Object.assign(
             {},
@@ -104,6 +108,8 @@ class AbstractUserIdLeaf extends BSClientLeaf {
     supplementStaMPEvent(event) {
         const lastResult = arguments[arguments.length - 1];
 
+        this._commentOnUserIdType(this.userId);
+
         return Object.assign(
             {},
             event,
@@ -117,6 +123,24 @@ class AbstractUserIdLeaf extends BSClientLeaf {
                 )
             }
         );
+    }
+
+    /**
+     * Checks the type of the given `userId`,
+     * and prints a warning comment to the console
+     * if it's not either `null`, or of type `string`.
+     *
+     * @param {?string} userId the userId that should be type checked.
+     *
+     * @protected
+     */
+    _commentOnUserIdType(userId) {
+        if (userId !== null && typeof userId !== 'string') {
+            console.warn(
+                `userId is of type ${typeof userId}, instead of string!`,
+                `This will result in the server implicitly casting it!!`
+            );
+        }
     }
 }
 

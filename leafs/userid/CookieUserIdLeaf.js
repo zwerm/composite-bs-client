@@ -48,18 +48,24 @@ class CookieUserIdLeaf extends AbstractUserIdLeaf {
 
     // region getters & setters
     /**
+     * @inheritDoc
      *
      * @return {?string}
+     * @override
      */
     get userId() {
         return this.constructor.getCookie(this._cookieName);
     }
 
     /**
+     * @inheritDoc
      *
      * @param {?string} userId
+     * @override
      */
     set userId(userId) {
+        this._commentOnUserIdType(userId);
+
         this.constructor.setCookie(this._cookieName, userId);
     }
 
