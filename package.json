@@ -15,7 +15,8 @@
         "url": "https://github.com/zwerm/composite-bs-client"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "version": "node ./scripts/npm-version.js"
     },
     "dependencies": {
         "callsite": "^1.0.0"
