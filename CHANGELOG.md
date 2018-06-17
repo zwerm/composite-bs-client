@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - `npm version` script to help automate bits and bobs, making it easier & quicker to release.
+
 ### Changed
  - `AbstractUserIdLeaf` (& by inheritance child leafs) will now print a warning to the console
     when a supplement method encounters a `userId` value that's not `null` or of type `string`. ([66c7846])
