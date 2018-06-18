@@ -12,10 +12,11 @@ const buildComposerTimeString = require('./buildComposerTimeString');
 const moveChangelogUnreleasedHeaderForVersion = (newVersion, changelogPath) => {
     const oldChangelogFile = fs.readFileSync(changelogPath).toString();
     const newChangelogFile = oldChangelogFile.replace('## [Unreleased]', [
-        '## [Unreleased]',
-        null, // there should be a blank line between ## [Unreleased] & the new version header
-        `## [${newVersion}] - ${buildComposerTimeString(new Date())}`
-    ].join('\n'));
+            '## [Unreleased]',
+            null, // there should be a blank line between ## [Unreleased] & the new version header
+            `## [${newVersion}] - ${buildComposerTimeString(new Date())}`
+        ].join('\n')
+    );
 
     fs.writeFileSync(changelogPath, newChangelogFile);
 };
