@@ -14,7 +14,7 @@ const /** @type {module:path} */ path = require('path');
 const /** @type {Object} */ packageJson = require('./../package.json');
 
 const moveChangelogUnreleasedHeaderForVersion = require('./functions/moveChangelogUnreleasedHeaderForVersion');
-const updateChangelogGitHubLinksForVersion = require('./functions/updateChangelogGitHubLinksForVersion');
+const updateChangelogTagLinksForNewVersion = require('./functions/updateChangelogTagLinksForNewVersion');
 const addFilesToGit = require('./functions/addFilesToGit');
 
 /**
@@ -34,7 +34,7 @@ moveChangelogUnreleasedHeaderForVersion(packageJson.version, filePaths.CHANGELOG
 // endregion
 // region update CHANGELOG.md version header links
 console.log(`updating tag links in CHANGELOG.md...`);
-updateChangelogGitHubLinksForVersion(packageJson.version, packageJson.repository.url, filePaths.CHANGELOG);
+updateChangelogTagLinksForNewVersion(packageJson.version, packageJson.repository.url, filePaths.CHANGELOG);
 // endregion
 
 console.log();
