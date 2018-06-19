@@ -25,6 +25,8 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
     when a supplement method encounters a `userId` value that's not `null` or of type `string`. ([66c7846])
  - `StaticUserIdLeaf` & `CookieUserIdLeaf` leafs will now print a warning to the console
     when their setters are provided a value that's not `null` or of type `string`. ([f76b871])
+ - Made some minor grammatical corrections to, and removed trailing whitespace from,
+    both the `README.md` and `CHANGELOG.md` files.
 
 ### Removed
  - `@stampit/stamp` optional dependency, as it screws over `npm` despite being optional.
