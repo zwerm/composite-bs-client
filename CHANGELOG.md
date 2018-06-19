@@ -20,7 +20,7 @@ or by just deleting the project & re-checking it out again from source.
 Sorry in advance - it's easier to rip the bandage off now, vs later down the line.
 
 ### Added
- - `npm version` script to help automate bits and bobs, making it easier & quicker to release.
+ - `npm version` script to help automate bits and bobs, making it easier & quicker to release. ([73bc733])
 
 ### Changed
  - `AbstractUserIdLeaf` (& by inheritance child leafs) will now print a warning to the console
@@ -28,7 +28,7 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
  - `StaticUserIdLeaf` & `CookieUserIdLeaf` leafs will now print a warning to the console
     when their setters are provided a value that's not `null` or of type `string`. ([f76b871])
  - Made some minor grammatical corrections to, and removed trailing whitespace from,
-    both the `README.md` and `CHANGELOG.md` files.
+    both the `README.md` and `CHANGELOG.md` files. ([a28b471], [f45b923])
 
 ### Removed
  - `@stampit/stamp` optional dependency, as it screws over `npm` despite being optional.
@@ -38,10 +38,10 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 ## [0.1.1] - 2018-06-12
 
 ### Added
- - `private` & `engines` field to `package.json`, with a node engine requirement of +8
+ - `private` & `engines` field to `package.json`, with a node engine requirement of +8. ([8376e73])
 
 ### Changed
- - Fixed package names in requires in code example in `README.md`
+ - Fixed package names in requires in code example in `README.md`. ([8825631])
 
 ## 0.1.0 - 2018-06-12
 
@@ -53,5 +53,10 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 [0.2.0]: https://github.com/zwerm/composite-bs-client/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/zwerm/composite-bs-client/compare/v0.1.0...v0.1.1
 
+[73bc733]: https://github.com/Zwerm/composite-bs-client/commit/73bc733
 [66c7846]: https://github.com/Zwerm/composite-bs-client/commit/66c7846
 [f76b871]: https://github.com/Zwerm/composite-bs-client/commit/f76b871
+[f45b923]: https://github.com/Zwerm/composite-bs-client/commit/f45b923
+[a28b471]: https://github.com/Zwerm/composite-bs-client/commit/a28b471
+[8376e73]: https://github.com/Zwerm/composite-bs-client/commit/8376e73
+[8825631]: https://github.com/Zwerm/composite-bs-client/commit/8825631
