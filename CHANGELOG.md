@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.0] - 2018-06-19
+
 Some minor cleanup, automation, and fixes. Also added some warnings in the `userId` leafs
 when the `userId` is set to a value that's not of type `string` or `null`.
 
@@ -46,8 +48,9 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 ### Added
  - Initial commit
 
-[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.2.0...HEAD
 
+[0.2.0]: https://github.com/zwerm/composite-bs-client/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/zwerm/composite-bs-client/compare/v0.1.0...v0.1.1
 
 [66c7846]: https://github.com/Zwerm/composite-bs-client/commit/66c7846
