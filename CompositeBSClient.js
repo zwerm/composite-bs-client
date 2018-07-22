@@ -266,7 +266,7 @@ class CompositeBSClient {
             from: 'user',
             query,
             text,
-            data: { senderId: this._defaultUserId },
+            data: Object.assign({ senderId: this._defaultUserId }, data),
             timezone: null
         }));
     }
@@ -307,7 +307,7 @@ class CompositeBSClient {
             from: 'user',
             event,
             payload,
-            data: { senderId: this._defaultUserId },
+            data: Object.assign({ senderId: this._defaultUserId }, data),
             timezone: null
         }));
     }
