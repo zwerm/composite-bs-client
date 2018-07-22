@@ -34,7 +34,7 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
          * @type {Object}
          * @private
          */
-        this._payload = { ...payload };
+        this._payload = Object.assign({}, payload);
         /**
          *
          * @type {boolean}
@@ -78,7 +78,7 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
      * @return {Object}
      */
     get payload() {
-        return { ...this._payload };
+        return Object.assign({}, this._payload);
     }
 
     /**
@@ -87,7 +87,7 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
      * @param {Object} payload
      */
     set payload(payload) {
-        this._payload = { ...payload };
+        this._payload = Object.assign({}, payload);
     }
 
     // endregion
