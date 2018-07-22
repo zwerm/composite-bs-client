@@ -18,9 +18,10 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
      *
      * @param {string} event
      * @param {Object} [payload={}]
+     * @param {StaMP.Protocol.Messages.StandardisedEventMessageData|Object} [data={}}
      * @param {boolean} [resendOnReconnect=false] if `true`, then the event will be sent regardless of the if the client has already connected in the past
      */
-    constructor(event, payload = {}, resendOnReconnect = false) {
+    constructor(event, payload = {}, data = {}, resendOnReconnect = false) {
         super();
 
         /**
@@ -35,6 +36,12 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
          * @private
          */
         this._payload = { ...payload };
+        /**
+         *
+         * @type {StaMP.Protocol.Messages.StandardisedEventMessageData|Object}
+         * @private
+         */
+        this._data = Object.assign({}, data);
         /**
          *
          * @type {boolean}
@@ -91,6 +98,26 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
     }
 
     // endregion
+    // region data (get & set)
+    /**
+     * Gets the data that this `Leaf` will send after handshaking with the server.
+     *
+     * @return {StaMP.Protocol.Messages.StandardisedEventMessageData|Object}
+     */
+    get data() {
+        return Object.assign({}, this._data);
+    }
+
+    /**
+     * Sets the data that this `Leaf` will send after handshaking with the server.
+     *
+     * @param {StaMP.Protocol.Messages.StandardisedEventMessageData|Object} data
+     */
+    set data(data) {
+        this._data = Object.assign({}, data);
+    }
+
+    // endregion
     // region resendOnReconnect (get & set)
     /**
      * Gets whether this `Leaf` will re-send it's event when the `CompositeBSClient`
@@ -137,7 +164,7 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
             return;
         }
 
-        this.bsClient.sendEvent(this._event, this._payload);
+        this.bsClient.sendEvent(this._event, this._payload, this._data);
     }
 }
 
