@@ -19,10 +19,12 @@
         "version": "node ./scripts/npm-version.js"
     },
     "dependencies": {
-        "callsite": "^1.0.0"
+        "callsite": "^1.0.0",
+        "debug": "^3.1.0"
     },
     "devDependencies": {
         "@types/callsite": "^1.0.30",
+        "@types/debug": "0.0.30",
         "@types/node": "^8.10.19"
     },
     "engines": {

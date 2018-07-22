@@ -4,6 +4,7 @@ const UnsupportedRequestTypeException = require('./exceptions/UnsupportedRequest
 
 const BSClientSocket = require('./BSClientSocket');
 const BSClientBush = require('./leafs/BSClientBush');
+const { name: packageName } = require('./package.json');
 
 /**
  *
@@ -87,6 +88,12 @@ class CompositeBSClient {
          * @private
          */
         this._defaultUserId = defaultUserId;
+        /**
+         *
+         * @type {debug.IDebugger}
+         * @private
+         */
+        this._logger = require('debug')(`${packageName}:${this.constructor.name}`);
 
         this._bsClientSocket.on(BSClientSocket.E_SOCKET_OPEN, (...args) => this._handleSocketConnected(...args));
         this._bsClientSocket.on(BSClientSocket.E_SOCKET_CLOSE, (...args) => this._handleSocketDisconnected(...args));
@@ -124,7 +131,7 @@ class CompositeBSClient {
      */
     _handleSocketDisconnected({ disconnectCode }) {
         this._bsClientBush.postDisconnect(disconnectCode);
-        console.warn('socket closed');
+        this._logger('socket closed');
     }
 
     /**
@@ -143,7 +150,7 @@ class CompositeBSClient {
      * @private
      */
     _handleSocketMessaged({ message }) {
-        console.log(message);
+        this._logger('new message', message);
         switch (message.request) {
             case 'handshake':
                 this._processServerHandshake((/** @type {BotSocket.Protocol.Messages.ServerHandshake} */ message).data);

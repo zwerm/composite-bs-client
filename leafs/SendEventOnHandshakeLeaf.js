@@ -18,9 +18,10 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
      *
      * @param {string} event
      * @param {Object} [payload={}]
+     * @param {StaMP.Protocol.Messages.StandardisedEventMessageData|Object} [data={}}
      * @param {boolean} [resendOnReconnect=false] if `true`, then the event will be sent regardless of the if the client has already connected in the past
      */
-    constructor(event, payload = {}, resendOnReconnect = false) {
+    constructor(event, payload = {}, data = {}, resendOnReconnect = false) {
         super();
 
         /**
@@ -34,7 +35,13 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
          * @type {Object}
          * @private
          */
-        this._payload = { ...payload };
+        this._payload = Object.assign({}, payload);
+        /**
+         *
+         * @type {StaMP.Protocol.Messages.StandardisedEventMessageData|Object}
+         * @private
+         */
+        this._data = Object.assign({}, data);
         /**
          *
          * @type {boolean}
@@ -78,7 +85,7 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
      * @return {Object}
      */
     get payload() {
-        return { ...this._payload };
+        return Object.assign({}, this._payload);
     }
 
     /**
@@ -87,7 +94,27 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
      * @param {Object} payload
      */
     set payload(payload) {
-        this._payload = { ...payload };
+        this._payload = Object.assign({}, payload);
+    }
+
+    // endregion
+    // region data (get & set)
+    /**
+     * Gets the data that this `Leaf` will send after handshaking with the server.
+     *
+     * @return {StaMP.Protocol.Messages.StandardisedEventMessageData|Object}
+     */
+    get data() {
+        return Object.assign({}, this._data);
+    }
+
+    /**
+     * Sets the data that this `Leaf` will send after handshaking with the server.
+     *
+     * @param {StaMP.Protocol.Messages.StandardisedEventMessageData|Object} data
+     */
+    set data(data) {
+        this._data = Object.assign({}, data);
     }
 
     // endregion
@@ -137,7 +164,7 @@ class SendEventOnHandshakeLeaf extends BSClientLeaf {
             return;
         }
 
-        this.bsClient.sendEvent(this._event, this._payload);
+        this.bsClient.sendEvent(this._event, this._payload, this._data);
     }
 }
 
