@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Changed
+ - Replaced calls to `console` with calls to `debug`. Namespaces are `<package-name>:<class-name>`
  - Replaced usage of object spread operator in `SendEventOnHandshakeLeaf` with `Object.assign`,
    as it just makes life easier when use `babel` (since it's technically still a proposal).
 

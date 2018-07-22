@@ -3,6 +3,7 @@ const SocketNotReadyException = require('./exceptions/SocketNotReadyException');
 // endregion
 
 const EventEmitter = require('events');
+const { name: packageName } = require('./package.json');
 
 /**
  * @implements {BotSocket.ClientSocket}
@@ -27,6 +28,12 @@ class BSClientSocket extends EventEmitter {
          * @private
          */
         this._socket = null;
+        /**
+         *
+         * @type {debug.IDebugger}
+         * @private
+         */
+        this._logger = require('debug')(`${packageName}:${this.constructor.name}`);
     }
 
     // region event constants
@@ -216,7 +223,7 @@ class BSClientSocket extends EventEmitter {
             socket.addEventListener('close', event => this._handleSocketClosed(event));
             socket.addEventListener('message', event => this._handleSocketMessaged(event));
 
-            console.log('socket opened');
+            this._logger('socket opened');
         });
 
         this._socket = socket;
@@ -263,7 +270,7 @@ class BSClientSocket extends EventEmitter {
         try {
             data = JSON.parse(messageEvent.data);
         } catch (error) {
-            console.error('server sent malformed json:', messageEvent.data);
+            this._logger('server sent malformed json:', messageEvent.data);
         }
 
         if (data) {
