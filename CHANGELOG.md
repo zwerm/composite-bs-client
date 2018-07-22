@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
  - Replaced usage of object spread operator in `SendEventOnHandshakeLeaf` with `Object.assign`,
    as it just makes life easier when use `babel` (since it's technically still a proposal).
  - `SendEventOnHandshakeLeaf` now takes an object as it's third constructor parameter: `data`.
+ - `CompositeBSClient`s `sendQuery` & `sendEvent` methods now use their `data` parameter properly.
 
 ## [0.2.0] - 2018-06-19
 
