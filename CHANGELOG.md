@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+ - Adjusted `sendQuery` & `sendEvent` methods to use their `data` parameter properly.
+
 ## [0.2.0] - 2018-06-19
 
 Some minor cleanup, automation, and fixes. Also added some warnings in the `userId` leafs
