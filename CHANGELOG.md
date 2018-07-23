@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - New Leaf: `SessionStorageUserIdLeaf`, which uses [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) 
+   to persist a `userId`.
+
 ## [0.3.0] - 2018-07-23
 
 ### Changed
