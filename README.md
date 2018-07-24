@@ -238,6 +238,7 @@ Here is a brief overview of the leafs included in this package:
 | `StaticTimezoneLeaf`             | Timezone-managing leaf that that simply uses a static `timezone` that can be changed with getters & setters.
 | `AbstractUserIdLeaf`             | Abstract leaf that handles managing & providing a `user` as and when required during the usual operations of a `CompositeBSClient`.
 | `CookieUserIdLeaf`               | UserId-managing leaf that persists a `userId` via a browser cookie.
+| `SessionStorageUserIdLeaf`       | UserId-managing leaf that persists a `userId` using the `sessionStorage` api.
 | `StaticUserIdLeaf`               | UserId-managing leaf that that simply uses a static `userId` that can be changed with getters & setters.
 | `AutoReconnectLeaf`              | Leaf that handling automatic reconnects after a delay when the `CompositeBSClient` disconnects from the BotSocket server.
 | `ScrollToBottomOnLetterLeaf`     | Leaf that scrolls to the bottom of an `HTMLElement` when a `render-letter` request arrives.
