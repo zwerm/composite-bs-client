@@ -18,5 +18,6 @@ export const EmitStatusMessageEventsLeaf = require('./leafs/EmitStatusMessageEve
 export const EmitLetterMessageEventsLeaf = require('./leafs/EmitLetterMessageEventsLeaf');
 export const AutoReconnectLeaf = require('./leafs/AutoReconnectLeaf');
 export const SendEventOnHandshakeLeaf = require('./leafs/SendEventOnHandshakeLeaf');
+export const SendInputQueryOnFormSubmitLeaf = require('./leafs/SendInputQueryOnFormSubmitLeaf');
 export const ToggleDisabledOnConnectLeaf = require('./leafs/ToggleDisabledOnConnectLeaf');
 // endregion
