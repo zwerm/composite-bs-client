@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.0] - 2018-07-24
+
 ### Added
  - `SendInputQueryOnFormSubmitLeaf` export to `index.js`.
  - `ToggleDisabledOnConnectLeaf` export to `index.js`.
@@ -74,8 +76,9 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 ### Added
  - Initial commit
 
-[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.5.0...HEAD
 
+[0.5.0]: https://github.com/zwerm/composite-bs-client/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/zwerm/composite-bs-client/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/zwerm/composite-bs-client/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/zwerm/composite-bs-client/compare/v0.1.1...v0.2.0
