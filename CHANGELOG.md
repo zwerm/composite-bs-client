@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+ - `CookieUserIdLeaf` now takes a time in milliseconds as it's second constructor parameter to use as
+    the expiration time for the cookie it sets. This defaults to a value of 7 days.
+
 ## [0.3.0] - 2018-07-23
 
 ### Changed
