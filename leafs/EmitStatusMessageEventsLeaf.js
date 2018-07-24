@@ -111,7 +111,8 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     _emitStatusConnecting(isReconnection) {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_CONNECTING
-         * @type {object}
+         * @type {Object}
+         *
          * @property {boolean} E_STATUS_CONNECTING:isReconnection
          */
         this.emitter.emit(this.constructor.E_STATUS_CONNECTING, { isReconnection });
@@ -123,14 +124,14 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
      * Emits an event signaling that the BotSocket client has connected to the server.
      *
      * This event will provide nothing.
-     *=*
+     *
      * @fires EmitStatusMessageEventsLeaf#E_STATUS_CONNECT
      * @private
      */
     _emitStatusConnect() {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_CONNECT
-         * @type {object}
+         * @type {Object}
          */
         this.emitter.emit(this.constructor.E_STATUS_CONNECT, {});
     }
@@ -150,7 +151,7 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     _emitStatusDisconnecting(disconnectCode) {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_DISCONNECTING
-         * @type {object}
+         * @type {Object}
          *
          * @property {boolean} E_STATUS_DISCONNECTING:disconnectCode
          */
@@ -172,7 +173,7 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     _emitStatusDisconnect(disconnectCode) {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_DISCONNECT
-         * @type {object}
+         * @type {Object}
          *
          * @property {boolean} E_STATUS_DISCONNECT:disconnectCode
          */
@@ -194,7 +195,8 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     _emitStatusError(socketError) {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_ERROR
-         * @type {object}
+         * @type {Object}
+         *
          * @property {Object} E_STATUS_ERROR:socketError
          */
         this.emitter.emit(this.constructor.E_STATUS_ERROR, { socketError });
