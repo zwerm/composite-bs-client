@@ -12,6 +12,7 @@ export const BrowserLocationLeaf = require('./leafs/location/BrowserLocationLeaf
 export const StaticLocationLeaf = require('./leafs/location/StaticLocationLeaf');
 
 export const ScrollToBottomOnLetterLeaf = require('./leafs/ScrollToBottomOnLetterLeaf');
+export const ScrollToPositionOnLetterLeaf = require('./leafs/ScrollToPositionOnLetterLeaf');
 export const ScrollToTopOnLetterLeaf = require('./leafs/ScrollToTopOnLetterLeaf');
 export const EmitStatusMessageEventsLeaf = require('./leafs/EmitStatusMessageEventsLeaf');
 export const EmitLetterMessageEventsLeaf = require('./leafs/EmitLetterMessageEventsLeaf');
