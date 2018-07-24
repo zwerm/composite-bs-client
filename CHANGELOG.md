@@ -6,10 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - `e:status.handshake` event to `EmitStatusMessageEventsLeaf`, which is emitted whenever `postHandshake` is called.
+
 ## [0.4.0] - 2018-07-24
 
 ### Added
- - New Leaf: `SessionStorageUserIdLeaf`, which uses [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) 
+ - New Leaf: `SessionStorageUserIdLeaf`, which uses [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
    to persist a `userId`.
 
 ### Changed
