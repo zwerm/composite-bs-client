@@ -75,7 +75,16 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     }
 
     // endregion
+    // region E_STATUS_HANDSHAKE
+    /**
+     *
+     * @return {'e:status.handshake'}
+     */
+    static get E_STATUS_HANDSHAKE() {
+        return 'e:status.handshake';
+    }
 
+    // endregion
     // endregion
     // region getters & setters
     /**
@@ -192,6 +201,24 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     }
 
     // endregion
+    // region E_STATUS_HANDSHAKE
+    /**
+     * Emits an event signaling that the BotSocket client has shaken hands with the server.
+     *
+     * This event will provide nothing.
+     *
+     * @fires EmitStatusMessageEventsLeaf#E_STATUS_HANDSHAKE
+     * @private
+     */
+    _emitStatusHandshake() {
+        /**
+         * @event EmitStatusMessageEventsLeaf#E_STATUS_HANDSHAKE
+         * @type {Object}
+         */
+        this.emitter.emit(this.constructor.E_STATUS_HANDSHAKE, {});
+    }
+
+    // endregion
     // endregion
 
     /**
@@ -235,6 +262,13 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
      */
     errored() {
         this._emitStatusError();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    postHandshake() {
+        this._emitStatusHandshake();
     }
 }
 
