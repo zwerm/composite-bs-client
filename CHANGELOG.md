@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+ - `SendInputQueryOnFormSubmitLeaf` is now exported in `index.js`.
+ - `ToggleDisabledOnConnectLeaf` is now exported in `index.js`.
+ - `ScrollToPositionOnLetterLeaf` is now exported in `index.js`.
+ - `SessionStorageUserIdLeaf` is now exported in `index.js`.
  - `e:status.handshake` event to `EmitStatusMessageEventsLeaf`, which is emitted whenever `postHandshake` is called.
 
 ## [0.4.0] - 2018-07-24
