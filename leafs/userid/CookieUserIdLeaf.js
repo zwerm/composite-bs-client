@@ -11,11 +11,11 @@ class CookieUserIdLeaf extends AbstractUserIdLeaf {
      *
      * @param {string} name
      * @param {string} value
-     * @param {number} [days=7]
+     * @param {number} [expirationTimeInMs=7*864e5]
      * @param {string} [path='/']
      */
-    static setCookie(name, value, days = 7, path = '/') {
-        const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    static setCookie(name, value, expirationTimeInMs = 7 * 864e5, path = '/') {
+        const expires = new Date(Date.now() + expirationTimeInMs).toUTCString();
 
         document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires};path=${path}`;
     };
@@ -34,8 +34,9 @@ class CookieUserIdLeaf extends AbstractUserIdLeaf {
     /**
      *
      * @param {string} [cookieName='bs-user-id']
+     * @param {number} [expirationTimeInMs=7*864e5]
      */
-    constructor(cookieName = 'bs-user-id') {
+    constructor(cookieName = 'bs-user-id', expirationTimeInMs = 7 * 864e5) {
         super();
 
         /**
@@ -44,6 +45,12 @@ class CookieUserIdLeaf extends AbstractUserIdLeaf {
          * @private
          */
         this._cookieName = cookieName;
+        /**
+         *
+         * @type {number}
+         * @private
+         */
+        this._expirationTimeInMs = expirationTimeInMs;
     }
 
     // region getters & setters
@@ -66,7 +73,7 @@ class CookieUserIdLeaf extends AbstractUserIdLeaf {
     set userId(userId) {
         this._commentOnUserIdType(userId);
 
-        this.constructor.setCookie(this._cookieName, userId);
+        this.constructor.setCookie(this._cookieName, userId, this._expirationTimeInMs);
     }
 
     // endregion
