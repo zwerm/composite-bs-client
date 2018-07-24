@@ -75,7 +75,16 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     }
 
     // endregion
+    // region E_STATUS_HANDSHAKE
+    /**
+     *
+     * @return {'e:status.handshake'}
+     */
+    static get E_STATUS_HANDSHAKE() {
+        return 'e:status.handshake';
+    }
 
+    // endregion
     // endregion
     // region getters & setters
     /**
@@ -102,7 +111,8 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     _emitStatusConnecting(isReconnection) {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_CONNECTING
-         * @type {object}
+         * @type {Object}
+         *
          * @property {boolean} E_STATUS_CONNECTING:isReconnection
          */
         this.emitter.emit(this.constructor.E_STATUS_CONNECTING, { isReconnection });
@@ -114,14 +124,14 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
      * Emits an event signaling that the BotSocket client has connected to the server.
      *
      * This event will provide nothing.
-     *=*
+     *
      * @fires EmitStatusMessageEventsLeaf#E_STATUS_CONNECT
      * @private
      */
     _emitStatusConnect() {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_CONNECT
-         * @type {object}
+         * @type {Object}
          */
         this.emitter.emit(this.constructor.E_STATUS_CONNECT, {});
     }
@@ -141,7 +151,7 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     _emitStatusDisconnecting(disconnectCode) {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_DISCONNECTING
-         * @type {object}
+         * @type {Object}
          *
          * @property {boolean} E_STATUS_DISCONNECTING:disconnectCode
          */
@@ -163,7 +173,7 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     _emitStatusDisconnect(disconnectCode) {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_DISCONNECT
-         * @type {object}
+         * @type {Object}
          *
          * @property {boolean} E_STATUS_DISCONNECT:disconnectCode
          */
@@ -185,10 +195,29 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
     _emitStatusError(socketError) {
         /**
          * @event EmitStatusMessageEventsLeaf#E_STATUS_ERROR
-         * @type {object}
+         * @type {Object}
+         *
          * @property {Object} E_STATUS_ERROR:socketError
          */
         this.emitter.emit(this.constructor.E_STATUS_ERROR, { socketError });
+    }
+
+    // endregion
+    // region E_STATUS_HANDSHAKE
+    /**
+     * Emits an event signaling that the BotSocket client has shaken hands with the server.
+     *
+     * This event will provide nothing.
+     *
+     * @fires EmitStatusMessageEventsLeaf#E_STATUS_HANDSHAKE
+     * @private
+     */
+    _emitStatusHandshake() {
+        /**
+         * @event EmitStatusMessageEventsLeaf#E_STATUS_HANDSHAKE
+         * @type {Object}
+         */
+        this.emitter.emit(this.constructor.E_STATUS_HANDSHAKE, {});
     }
 
     // endregion
@@ -235,6 +264,13 @@ class EmitStatusMessageEventsLeaf extends BSClientLeaf {
      */
     errored() {
         this._emitStatusError();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    postHandshake() {
+        this._emitStatusHandshake();
     }
 }
 

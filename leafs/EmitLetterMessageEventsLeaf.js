@@ -58,7 +58,8 @@ class EmitLetterMessageEventsLeaf extends BSClientLeaf {
     _emitRenderLetter(letter) {
         /**
          * @event EmitLetterMessageEventsLeaf#E_RENDER_LETTER
-         * @type {object}
+         * @type {Object}
+         *
          * @property {StaMP.Protocol.Letter} E_RENDER_LETTER:letter
          */
         this.emitter.emit(this.constructor.E_RENDER_LETTER, { letter });
