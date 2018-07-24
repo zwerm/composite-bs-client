@@ -7,10 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
- - `SendInputQueryOnFormSubmitLeaf` is now exported in `index.js`.
- - `ToggleDisabledOnConnectLeaf` is now exported in `index.js`.
- - `ScrollToPositionOnLetterLeaf` is now exported in `index.js`.
- - `SessionStorageUserIdLeaf` is now exported in `index.js`.
+ - `SendInputQueryOnFormSubmitLeaf` export to `index.js`.
+ - `ToggleDisabledOnConnectLeaf` export to `index.js`.
+ - `ScrollToPositionOnLetterLeaf` export to `index.js`.
+ - `SessionStorageUserIdLeaf` export to `index.js`.
  - `e:status.handshake` event to `EmitStatusMessageEventsLeaf`, which is emitted whenever `postHandshake` is called.
 
 ## [0.4.0] - 2018-07-24
@@ -64,7 +64,7 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 ## [0.1.1] - 2018-06-12
 
 ### Added
- - `private` & `engines` field to `package.json`, with a node engine requirement of +8. ([8376e73])
+ - `private` & `engines` fields to `package.json`, with a node engine requirement of +8. ([8376e73])
 
 ### Changed
  - Fixed package names in requires in code example in `README.md`. ([8825631])
