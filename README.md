@@ -250,6 +250,7 @@ Here is a brief overview of the leafs included in this package:
 | `ToggleDisabledOnConnectLeaf`    | Leaf that toggles the disabled state of an `HTMLElement` when a `CompositeBSClient` connects and disconnects.
 | `SendInputQueryOnFormSubmitLeaf` | Leaf that sends the value of an `HTMLInputElement` when an `HTMLFormElement` is submitted.
 | `SendEventOnHandshakeLeaf`       | Leaf that sends an event message to the server once handshaking is complete, triggering a bot response (if supported).
+| `ConversationDataIncluderLeaf`   | Leaf that handles including conversation store & context in the data property of every message send by the `CompositeBSClient`.
 
 Note that not all of the leafs use methods defined in `BSClientLeaf`. Leafs are also useful as way of grouping functionality related to the `CompositeBSClient`.
 
