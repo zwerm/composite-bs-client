@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+ - Fixed `ConversationDataIncluderLeaf` attempting to call a method that isn't defined on it's class.
+
 ## [0.6.0] - 2018-07-25
 
 ### Added
