@@ -78,8 +78,6 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
     supplementStaMPQuery(query) {
         const lastResult = arguments[arguments.length - 1];
 
-        this._commentOnUserIdType(this.userId);
-
         return Object.assign(
             {},
             query,
@@ -105,8 +103,6 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
      */
     supplementStaMPEvent(event) {
         const lastResult = arguments[arguments.length - 1];
-
-        this._commentOnUserIdType(this.userId);
 
         return Object.assign(
             {},
