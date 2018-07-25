@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - New Leaf: `ConversationDataIncluderLeaf`, which allows easy including of the store & context of a conversation in every sent message.
+
 ## [0.5.0] - 2018-07-24
 
 ### Added
