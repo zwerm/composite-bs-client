@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.2] - 2018-08-02
+
 ### Changed
  - Fixed `ConversationDataIncluderLeaf` using the wrong property for setting the context (was `conversationContext` and now correctly uses `context`). 
  
@@ -89,8 +91,9 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 ### Added
  - Initial commit
 
-[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.6.1...HEAD
+[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.6.2...HEAD
 
+[0.6.2]: https://github.com/zwerm/composite-bs-client/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/zwerm/composite-bs-client/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/zwerm/composite-bs-client/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/zwerm/composite-bs-client/compare/v0.4.0...v0.5.0
