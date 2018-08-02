@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+ - `ConversationDataIncluderLeaf` now supports persisting via `sessionStorage.`
+ This is enabled by default, but can be disabled with a constructor parameter.
+
 ## [0.6.2] - 2018-08-02
 
 ### Changed
