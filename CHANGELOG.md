@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+ - Fixed `ConversationDataIncluderLeaf` using the wrong property for setting the context (was `conversationContext` and now correctly uses `context`). 
+ 
 ## [0.6.1] - 2018-07-25
 
 ### Changed
