@@ -9,10 +9,10 @@ const BSClientLeaf = require('./BSClientLeaf');
 class ConversationDataIncluderLeaf extends BSClientLeaf {
     /**
      *
-     * @param {string} [conversationContext='']
+     * @param {string} [context='']
      * @param {Object} [conversationStore={}]
      */
-    constructor(conversationContext = '', conversationStore = {}) {
+    constructor(context = '', conversationStore = {}) {
         super();
 
         /**
@@ -20,7 +20,7 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
          * @type {string}
          * @private
          */
-        this._conversationContext = conversationContext;
+        this._context = context;
         /**
          *
          * @type {Object}
@@ -30,21 +30,21 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
     }
 
     // region getters & setters
-    // region conversationContext (get & set)
+    // region context (get & set)
     /**
      *
      * @return {string}
      */
-    get conversationContext() {
-        return this._conversationContext;
+    get context() {
+        return this._context;
     }
 
     /**
      *
-     * @param {string} conversationContext
+     * @param {string} context
      */
-    set conversationContext(conversationContext) {
-        this._conversationContext = conversationContext;
+    set context(context) {
+        this._context = context;
     }
 
     // endregion
@@ -122,12 +122,12 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
     /**
      * Builds a conversation object, to be merged into the data property of a message.
      *
-     * @return {{conversationContext: string, conversationStore: Object}}
+     * @return {{context: string, conversationStore: Object}}
      * @private
      */
     _buildConversationObject() {
         return {
-            conversationContext: this._conversationContext,
+            context: this._context,
             conversationStore: this._conversationStore
         };
     }
