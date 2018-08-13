@@ -231,6 +231,10 @@ Here is a brief overview of the leafs included in this package:
 
 | Class name                       | Usage
 | -------------------------------- |:---
+| `AbstractRendererLeaf`           | Abstract leaf that handles rendering messages as and when required during the usual operations of a `CompositeBSClient`.
+| `DebugRendererLeaf`              | Renderer leaf that 'renders' all messages to the console via `debug`.
+| `AbstractArchiverLeaf`           | Abstract leaf that handles persisting messages as and when required during the usual operations of a `CompositeBSClient`.
+| `SessionStorageArchiverLeaf`     | Archiver leaf that handles persisting messages using the `sessionStorage` API.
 | `AbstractLocationLeaf`           | Abstract leaf that handles managing & providing a `location` as and when required during the usual operations of a `CompositeBSClient`.
 | `StaticLocationLeaf`             | Location-managing leaf that that simply uses a static lat & lng that can be changed with getters & setters.
 | `BrowserLocationLeaf`            | Location-managing leaf that gets its `location` via the geolocation browser API.
@@ -238,7 +242,7 @@ Here is a brief overview of the leafs included in this package:
 | `StaticTimezoneLeaf`             | Timezone-managing leaf that that simply uses a static `timezone` that can be changed with getters & setters.
 | `AbstractUserIdLeaf`             | Abstract leaf that handles managing & providing a `user` as and when required during the usual operations of a `CompositeBSClient`.
 | `CookieUserIdLeaf`               | UserId-managing leaf that persists a `userId` via a browser cookie.
-| `SessionStorageUserIdLeaf`       | UserId-managing leaf that persists a `userId` using the `sessionStorage` api.
+| `SessionStorageUserIdLeaf`       | UserId-managing leaf that persists a `userId` using the `sessionStorage` API.
 | `StaticUserIdLeaf`               | UserId-managing leaf that that simply uses a static `userId` that can be changed with getters & setters.
 | `AutoReconnectLeaf`              | Leaf that handling automatic reconnects after a delay when the `CompositeBSClient` disconnects from the BotSocket server.
 | `ScrollToBottomOnLetterLeaf`     | Leaf that scrolls to the bottom of an `HTMLElement` when a `render-letter` request arrives.
