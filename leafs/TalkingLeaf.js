@@ -10,7 +10,7 @@ class TalkingLeaf extends BSClientLeaf {
      * @param {AudioContext} [audioContext=new AudioContext()]
      * @param {boolean} [speechEnabled=true]
      */
-    constructor(audioContext = new AudioContext(), speechEnabled = true) {
+    constructor(audioContext, speechEnabled = true) {
         super();
 
         /**
