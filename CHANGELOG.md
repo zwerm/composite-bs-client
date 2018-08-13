@@ -6,10 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.6.3] - 2018-08-14
+This release adds a couple of new abstract leafs for persisting & rendering messages,
+as well as fixes a bug that was causing an error to be thrown in Safari when using the `TalkingLeaf`, 
+that'd result in the whole client (and usually surrounding app, depending on usage & implementation) to stop working.
 
-Fix a bug that was causing an error to be thrown in Safari when using the `TalkingLeaf`, that'd result in the whole
-client (and usually surrounding app, depending on usage & implementation) to stop working.
+### Added
+ - `AbstractArchiverLeaf` - Abstract class for archiving leafs, that provide a means to store & retrieve messages of types.
+ - `SessionStorageArchiverLeaf` - an archiving leaf that stores messages using the `sessionStorage` api.
+ - `AbstractRendererLeaf` - Abstract class for rendering leafs, that provide a means of rendering messages, and optionally take an `Archiver` as their
+    first parameter, that they can use to display previously sent messages.
+ - `DebugRendererLeaf` - a rendering leaf that 'renders' all messages to the console via `debug`.
 
 ### Changed
  - `TalkingLeaf` no longer instances a new `AudioContext` as the default value for it's `audioContext` constructor parameter.
