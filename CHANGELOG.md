@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+Fix a bug that was causing an error to be thrown in Safari when using the `TalkingLeaf`, that'd result in the whole
+client (and usually surrounding app, depending on usage & implementation) to stop working.
+
+### Changed
+ - `TalkingLeaf` no longer instances a new `AudioContext` as the default value for it's `audioContext` constructor parameter.
+    `ClientMouth` already does this, but checks if `AudioContext` is actually supported first, meaning we can just remove the
+    default parameter, rather than perform the check twice.
+
 ## [0.6.2] - 2018-08-02
 
 ### Changed
