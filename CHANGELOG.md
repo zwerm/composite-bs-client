@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.0] - 2018-08-14
+
 This release adds a couple of new abstract leafs for persisting & rendering messages,
 as well as fixes a bug that was causing an error to be thrown in Safari when using the `TalkingLeaf`, 
 that'd result in the whole client (and usually surrounding app, depending on usage & implementation) to stop working.
@@ -107,8 +109,9 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 ### Added
  - Initial commit
 
-[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.6.3...HEAD
+[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.7.0...HEAD
 
+[0.7.0]: https://github.com/zwerm/composite-bs-client/compare/v0.6.3...v0.7.0
 [0.6.3]: https://github.com/zwerm/composite-bs-client/compare/v0.6.2...v0.6.3
 [0.6.2]: https://github.com/zwerm/composite-bs-client/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/zwerm/composite-bs-client/compare/v0.6.0...v0.6.1
