@@ -55,7 +55,7 @@ export declare namespace BotSocket {
             /**
              * Data provided by the client in it's handshake requests.
              */
-            interface ClientHandshakeData {
+            interface ClientHandshakeData extends RequestData {
                 /**
                  * @deprecated in favor of userId
                  */
@@ -85,7 +85,7 @@ export declare namespace BotSocket {
             /**
              * Data provided by the server in it's handshake requests.
              */
-            interface ServerHandshakeData {
+            interface ServerHandshakeData extends RequestData {
                 /**
                  * The id of the user that the server *says* the client
                  * represents when sending messages to the server.
