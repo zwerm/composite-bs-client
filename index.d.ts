@@ -23,6 +23,12 @@ export declare namespace BotSocket {
 
     // region namespace: Protocol
     namespace Protocol {
+        interface BotUserConversation {
+            botUserId: string;
+            conversationId: string;
+            expiresAt: string;
+        }
+
         namespace Messages {
             interface MessagesRequestDataMap {
                 'handshake': ClientHandshakeData,
