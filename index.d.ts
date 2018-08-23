@@ -50,6 +50,7 @@ export declare namespace BotSocket {
             }
 
             interface RequestData {
+                conversation?: BotUserConversation | null;
             }
 
             // region ClientHandshake
