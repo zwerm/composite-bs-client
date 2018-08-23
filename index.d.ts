@@ -109,6 +109,11 @@ export declare namespace BotSocket {
                  * interactions with the server.
                  */
                 connectionId: string;
+                /**
+                 * Array of prior requests messages that the server has sent
+                 * previously to clients connected with the given `userId`.
+                 */
+                priorRequests: Array<BotSocket.Protocol.Messages.RequestMessage>;
             }
 
             // endregion
