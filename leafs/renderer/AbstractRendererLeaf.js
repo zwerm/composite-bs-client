@@ -65,9 +65,16 @@ class AbstractRendererLeaf extends BSClientLeaf {
             return;
         } // don't do anything if we don't have an archiver
 
-        this.archiver
-            .getRequests(['render-letter'])
-            .forEach(({ data }) => this.processRenderLetterRequest(data));
+        this._renderArchiverRequests();
+    }
+
+    /**
+     * Renders all the archived `render-letter` requests.
+     *
+     * @protected
+     */
+    _renderArchiverRequests() {
+        this.archiver.getRequests(['render-letter'])().forEach(({ data }) => this.processRenderLetterRequest(data));
     }
 
     /**
