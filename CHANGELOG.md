@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - `AbstractRendererLeaf#archiver` setter, for the private `#_archiver` property.
+ - `AbstractRendererLeaf#_renderArchiverRequests` method; this method encapsulates code previously called in `#postHandshake`,
+ opening it up to be overridden by child classes.
+ - `AbstractRendererLeaf#_getArchiverRequestsToRender` method; this method encapsulates code previously called in `#postHandshake` (& then `#_renderArchiverRequests`),
+  opening it up to be overridden by child classes.
+
 ## [0.7.0] - 2018-08-14
 
 This release adds a couple of new abstract leafs for persisting & rendering messages,
