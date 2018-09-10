@@ -48,6 +48,7 @@ class AbstractRendererLeaf extends BSClientLeaf {
     }
 
     // region getters & setters
+    // region archiver (get & set)
     /**
      *
      * @return {?AbstractArchiverLeaf}
@@ -56,6 +57,15 @@ class AbstractRendererLeaf extends BSClientLeaf {
         return this._archiver;
     }
 
+    /**
+     *
+     * @param {?AbstractArchiverLeaf} archiver
+     */
+    set archiver(archiver) {
+        this._archiver = archiver;
+    }
+
+    // endregion
     // endregion
     /**
      * @inheritDoc
