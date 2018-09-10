@@ -69,12 +69,24 @@ class AbstractRendererLeaf extends BSClientLeaf {
     }
 
     /**
-     * Renders all the archived `render-letter` requests.
+     * Renders all the requests returned by the {@link #_getArchiverRequestsToRender `#_getArchiverRequestsToRender`} method.
      *
      * @protected
      */
     _renderArchiverRequests() {
-        this.archiver.getRequests(['render-letter'])().forEach(({ data }) => this.processRenderLetterRequest(data));
+        this._getArchiverRequestsToRender().forEach(({ data }) => this.processRenderLetterRequest(data));
+    }
+
+    /**
+     * Gets all the requests that should be rendered from the `AbstractArchiverLeaf`.
+     *
+     * By default, this method just returns all the archived `render-letter` requests.
+     *
+     * @return {Array<BotSocket.Protocol.Messages.RequestMessage>}
+     * @protected
+     */
+    _getArchiverRequestsToRender() {
+        return this.archiver.getRequests(['render-letter']);
     }
 
     /**
