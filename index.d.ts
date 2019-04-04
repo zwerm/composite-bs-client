@@ -23,6 +23,12 @@ export declare namespace BotSocket {
 
     // region namespace: Protocol
     namespace Protocol {
+        interface BotUserConversation {
+            botUserId: string;
+            conversationId: string;
+            expiresAt: string;
+        }
+
         namespace Messages {
             interface MessagesRequestDataMap {
                 'handshake': ClientHandshakeData,
@@ -44,6 +50,7 @@ export declare namespace BotSocket {
             }
 
             interface RequestData {
+                conversation?: BotUserConversation | null;
             }
 
             // region ClientHandshake
@@ -55,7 +62,7 @@ export declare namespace BotSocket {
             /**
              * Data provided by the client in it's handshake requests.
              */
-            interface ClientHandshakeData {
+            interface ClientHandshakeData extends RequestData {
                 /**
                  * @deprecated in favor of userId
                  */
@@ -85,7 +92,7 @@ export declare namespace BotSocket {
             /**
              * Data provided by the server in it's handshake requests.
              */
-            interface ServerHandshakeData {
+            interface ServerHandshakeData extends RequestData {
                 /**
                  * The id of the user that the server *says* the client
                  * represents when sending messages to the server.
@@ -102,6 +109,11 @@ export declare namespace BotSocket {
                  * interactions with the server.
                  */
                 connectionId: string;
+                /**
+                 * Array of prior requests messages that the server has sent
+                 * previously to clients connected with the given `userId`.
+                 */
+                priorRequests: Array<BotSocket.Protocol.Messages.RequestMessage>;
             }
 
             // endregion

@@ -6,9 +6,34 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - `AbstractRendererLeaf#archiver` setter, for the private `#_archiver` property.
+ - `AbstractRendererLeaf#_renderArchiverRequests` method; this method encapsulates code previously called in `#postHandshake`,
+ opening it up to be overridden by child classes.
+ - `AbstractRendererLeaf#_getArchiverRequestsToRender` method; this method encapsulates code previously called in `#postHandshake` (& then `#_renderArchiverRequests`),
+  opening it up to be overridden by child classes.
+
 ### Changed
  - `ConversationDataIncluderLeaf` now supports persisting via `sessionStorage.`
  This is enabled by default, but can be disabled with a constructor parameter.
+
+## [0.7.0] - 2018-08-14
+
+This release adds a couple of new abstract leafs for persisting & rendering messages,
+as well as fixes a bug that was causing an error to be thrown in Safari when using the `TalkingLeaf`, 
+that'd result in the whole client (and usually surrounding app, depending on usage & implementation) to stop working.
+
+### Added
+ - `AbstractArchiverLeaf` - Abstract class for archiving leafs, that provide a means to store & retrieve messages of types.
+ - `SessionStorageArchiverLeaf` - an archiving leaf that stores messages using the `sessionStorage` api.
+ - `AbstractRendererLeaf` - Abstract class for rendering leafs, that provide a means of rendering messages, and optionally take an `Archiver` as their
+    first parameter, that they can use to display previously sent messages.
+ - `DebugRendererLeaf` - a rendering leaf that 'renders' all messages to the console via `debug`.
+
+### Changed
+ - `TalkingLeaf` no longer instances a new `AudioContext` as the default value for it's `audioContext` constructor parameter.
+    `ClientMouth` already does this, but checks if `AudioContext` is actually supported first, meaning we can just remove the
+    default parameter, rather than perform the check twice.
 
 ## [0.6.2] - 2018-08-02
 
@@ -95,8 +120,10 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 ### Added
  - Initial commit
 
-[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.6.2...HEAD
+[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.7.0...HEAD
 
+[0.7.0]: https://github.com/zwerm/composite-bs-client/compare/v0.6.3...v0.7.0
+[0.6.3]: https://github.com/zwerm/composite-bs-client/compare/v0.6.2...v0.6.3
 [0.6.2]: https://github.com/zwerm/composite-bs-client/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/zwerm/composite-bs-client/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/zwerm/composite-bs-client/compare/v0.5.0...v0.6.0
