@@ -48,6 +48,7 @@ class AbstractRendererLeaf extends BSClientLeaf {
     }
 
     // region getters & setters
+    // region archiver (get & set)
     /**
      *
      * @return {?AbstractArchiverLeaf}
@@ -56,6 +57,15 @@ class AbstractRendererLeaf extends BSClientLeaf {
         return this._archiver;
     }
 
+    /**
+     *
+     * @param {?AbstractArchiverLeaf} archiver
+     */
+    set archiver(archiver) {
+        this._archiver = archiver;
+    }
+
+    // endregion
     // endregion
     /**
      * @inheritDoc
@@ -65,9 +75,28 @@ class AbstractRendererLeaf extends BSClientLeaf {
             return;
         } // don't do anything if we don't have an archiver
 
-        this.archiver
-            .getRequests(['render-letter'])
-            .forEach(({ data }) => this.processRenderLetterRequest(data));
+        this._renderArchiverRequests();
+    }
+
+    /**
+     * Renders all the requests returned by the {@link #_getArchiverRequestsToRender `#_getArchiverRequestsToRender`} method.
+     *
+     * @protected
+     */
+    _renderArchiverRequests() {
+        this._getArchiverRequestsToRender().forEach(({ data }) => this.processRenderLetterRequest(data));
+    }
+
+    /**
+     * Gets all the requests that should be rendered from the `AbstractArchiverLeaf`.
+     *
+     * By default, this method just returns all the archived `render-letter` requests.
+     *
+     * @return {Array<BotSocket.Protocol.Messages.RequestMessage>}
+     * @protected
+     */
+    _getArchiverRequestsToRender() {
+        return this.archiver.getRequests(['render-letter']);
     }
 
     /**
