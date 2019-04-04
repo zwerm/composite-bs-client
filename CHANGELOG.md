@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.0] - 2019-04-05
+
 ### Added
  - `AbstractRendererLeaf#archiver` setter, for the private `#_archiver` property.
  - `AbstractRendererLeaf#_renderArchiverRequests` method; this method encapsulates code previously called in `#postHandshake`,
@@ -120,8 +122,9 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 ### Added
  - Initial commit
 
-[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/zwerm/composite-bs-client/compare/v0.8.0...HEAD
 
+[0.8.0]: https://github.com/zwerm/composite-bs-client/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/zwerm/composite-bs-client/compare/v0.6.3...v0.7.0
 [0.6.3]: https://github.com/zwerm/composite-bs-client/compare/v0.6.2...v0.6.3
 [0.6.2]: https://github.com/zwerm/composite-bs-client/compare/v0.6.1...v0.6.2
