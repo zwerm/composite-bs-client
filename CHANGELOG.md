@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
  - `AbstractRendererLeaf#_getArchiverRequestsToRender` method; this method encapsulates code previously called in `#postHandshake` (& then `#_renderArchiverRequests`),
   opening it up to be overridden by child classes.
 
+### Changed
+ - `ConversationDataIncluderLeaf` now supports persisting via `sessionStorage.`
+ This is enabled by default, but can be disabled with a constructor parameter.
+
 ## [0.7.0] - 2018-08-14
 
 This release adds a couple of new abstract leafs for persisting & rendering messages,

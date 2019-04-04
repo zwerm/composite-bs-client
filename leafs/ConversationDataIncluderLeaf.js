@@ -11,8 +11,19 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
      *
      * @param {string} [context='']
      * @param {Object} [conversationStore={}]
+     * @param {boolean} [persist=true]
+     * @param {string} [contextSessionName='bs-conversation-context']
+     * @param {string} [storeSessionName='bs-conversation-store']
      */
-    constructor(context = '', conversationStore = {}) {
+    constructor(
+        context = '',
+        conversationStore = {},
+        persist = true,
+        {
+            contextSessionName = 'bs-conversation-context',
+            storeSessionName = 'bs-conversation-store'
+        }
+    ) {
         super();
 
         /**
@@ -27,6 +38,25 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
          * @private
          */
         this._conversationStore = conversationStore;
+        /**
+         *
+         * @type {boolean}
+         * @private
+         */
+        this._persist = persist;
+        /**
+         *
+         * @type {string}
+         * @private
+         */
+        this._contextSessionName = contextSessionName;
+        /**
+         *
+         * @type {string}
+         * @private
+         */
+        this._storeSessionName = storeSessionName;
+
     }
 
     // region getters & setters
@@ -36,7 +66,9 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
      * @return {string}
      */
     get context() {
-        return this._context;
+        return this._persist
+            ? sessionStorage.getItem(this._contextSessionName)
+            : this._context;
     }
 
     /**
@@ -44,7 +76,9 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
      * @param {string} context
      */
     set context(context) {
-        this._context = context;
+        this._persist
+            ? sessionStorage.setItem(this._contextSessionName, context)
+            : this._context = context;
     }
 
     // endregion
@@ -54,7 +88,9 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
      * @return {Object}
      */
     get conversationStore() {
-        return this._conversationStore;
+        return this._persist
+            ? JSON.parse(sessionStorage.getItem(this._storeSessionName))
+            : this._conversationStore;
     }
 
     /**
@@ -62,7 +98,9 @@ class ConversationDataIncluderLeaf extends BSClientLeaf {
      * @param {Object} conversationStore
      */
     set conversationStore(conversationStore) {
-        this._conversationStore = conversationStore;
+        this._persist
+            ? sessionStorage.setItem(this._storeSessionName, JSON.stringify(conversationStore))
+            : this._conversationStore = conversationStore;
     }
 
     // endregion
